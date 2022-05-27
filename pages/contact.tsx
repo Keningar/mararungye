@@ -154,7 +154,7 @@ const Contact: NextPage = () => {
                     números telefónicos o redes sociales
                   </p>
                   <dl className="mt-8 space-y-6">
-                    {["(04)3074693", "0967250231", "0969866519"].map((_, i) => (
+                    {["(04)5002771", "0967250231", "0960760637"].map((_, i) => (
                       <React.Fragment key={_}>
                         <dt>
                           <span className="sr-only">
