@@ -330,7 +330,7 @@ const Contact: NextPage = () => {
                         type="submit"
                         className="mt-2 w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:w-auto"
                       >
-                        Submit
+                        Enviar
                       </button>
                     </div>
                   </form>

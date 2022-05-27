@@ -67,10 +67,7 @@ const Home: NextPage = () => {
                 "https://static.wixstatic.com/media/a18606_62e1d7ef32fd4eceb617d247c89eb652~mv2.jpg/v1/fit/w_776,h_506,q_90/a18606_62e1d7ef32fd4eceb617d247c89eb652~mv2.jpg",
                 "-left-2",
               ],
-              [
-                "https://static.wixstatic.com/media/a18606_2f186195c91e4ea28a0afd50992223ac~mv2.jpg/v1/fit/w_776,h_506,q_90/a18606_2f186195c91e4ea28a0afd50992223ac~mv2.jpg",
-                "-right-2",
-              ],
+              ["/main_runner_3.jpeg", "-right-2"],
             ].map((_, i) => (
               <motion.img
                 initial={{
@@ -86,7 +83,7 @@ const Home: NextPage = () => {
                 key={`about-img-${i}`}
                 className={"absolute object-cover h-full w-1/2 " + _[1]}
                 style={{
-                  objectPosition: `${i == 0 ? 40 : 45}% 50%`,
+                  objectPosition: "40% 50%",
                 }}
                 draggable={false}
                 src={_[0]}
