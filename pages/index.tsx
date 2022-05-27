@@ -1,4 +1,6 @@
 import type { NextPage } from "next";
+import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 import Navbar from "@/components/Navbar";
@@ -31,16 +33,15 @@ const Home: NextPage = () => {
                   </span>
                 </h1>
                 <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                  UNETE SE PARTE DE NUESTRO EQUIPO
+                  UNETE Y SE PARTE DE NUESTRO EQUIPO
                 </p>
                 <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                   <div className="rounded-md shadow">
-                    <a
-                      href="#"
-                      className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
-                    >
-                      Más Información
-                    </a>
+                    <Link href="/contact">
+                      <a className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                        Más Información
+                      </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -48,12 +49,14 @@ const Home: NextPage = () => {
           </div>
         </div>
         <div className="my-10 lg:m-0 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-          <img
-            className="object-cover w-full h-96 sm:h-72 md:h-96 lg:h-full"
-            src="https://static.wixstatic.com/media/a18606_66f06983a34b46fbb8132c1f5419e1f3~mv2_d_2000_2007_s_2.jpg/v1/fill/w_1351,h_729,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/a18606_66f06983a34b46fbb8132c1f5419e1f3~mv2_d_2000_2007_s_2.jpg"
-            draggable={false}
-            alt=""
-          />
+          <div className="object-cover w-full h-96 sm:h-72 md:h-96 lg:h-full">
+            <Image
+              src="/hero_profile_2.jpg"
+              layout="fill"
+              draggable={false}
+              alt=""
+            />
+          </div>
         </div>
       </div>
       <div className="relative my-5 max-w-7xl mx-auto lg:h-screen">
@@ -107,16 +110,6 @@ const Home: NextPage = () => {
               competencia LOCOS POR EL RUNNING 5K. SIEMPRE AVANTE 5K.
               ULTRAMARATHON DEL GUAYAS 60K.
             </p>
-            <div className="mt-8">
-              <div className="inline-flex rounded-md shadow">
-                <a
-                  href="#"
-                  className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
-                >
-                  Más Información
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </div>
