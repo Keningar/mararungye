@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 
@@ -19,12 +20,14 @@ export default function Navbar() {
         >
           <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
             <div className="flex items-center justify-between w-full md:w-auto">
-              <a href="#">
+              <a href="/">
                 <span className="sr-only">Workflow</span>
-                <img
+                <Image
                   alt="Workflow"
-                  className="h-8 w-auto sm:h-10"
-                  src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                  width={40}
+                  height={40}
+                  layout="fixed"
+                  src="/mararungye.svg"
                 />
               </a>
               <div className="-mr-2 flex items-center md:hidden">
