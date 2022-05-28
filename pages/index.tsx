@@ -49,10 +49,11 @@ const Home: NextPage = () => {
           </div>
         </div>
         <div className="my-10 lg:m-0 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-          <div className="object-cover w-full h-96 sm:h-72 md:h-96 lg:h-full">
+          <div className="relative bg-indigo-400 w-full h-96 sm:h-72 md:h-96 lg:h-full">
             <Image
               src="/hero_profile_2.jpg"
               layout="fill"
+              className="object-cover object-[50%_65%]"
               draggable={false}
               alt=""
             />
