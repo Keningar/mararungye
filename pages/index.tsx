@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Head from 'next/head'
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -9,7 +10,12 @@ import Footer from "@/components/Footer";
 const Home: NextPage = () => {
   return (
     <div>
-      <div className="relative bg-white overflow-hidden">
+      <Head>
+        <title>MARARUNGYE</title>
+      </Head>
+      {/* Hero Section */}
+      <div className="relative overflow-hidden">
+        {/* Hero Content */}
         <div className="max-w-7xl mx-auto lg:h-screen">
           <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:h-full lg:pb-28 xl:pb-32">
             <svg
@@ -48,6 +54,7 @@ const Home: NextPage = () => {
             </main>
           </div>
         </div>
+        {/* Hero Image */}
         <div className="my-10 lg:m-0 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
           <div className="relative bg-indigo-400 w-full h-96 sm:h-72 md:h-96 lg:h-full">
             <Image
@@ -60,6 +67,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
+      {/* About Us Section */}
       <div className="relative my-5 max-w-7xl mx-auto lg:h-screen">
         <div className="relative h-96 md:absolute md:left-0 md:h-full md:w-1/2">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-5/6 w-5/12 md:w-3/4">
@@ -111,6 +119,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
+      {/* Next Events Section */}
       <div className="my-20 max-w-7xl mx-auto">
         <h2 className="text-center tracking-tight font-bold text-gray-900 text-3xl sm:text-4xl md:text-5xl">
           <span className="block xl:inline uppercase">proximos eventos</span>
@@ -123,6 +132,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
+      {/* Sponsors Section */}
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <p className="text-center text-base font-semibold uppercase text-gray-600 tracking-wider">
           Gracias a la confianza de nuestros patrocinadores
