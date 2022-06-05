@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import Head from 'next/head'
+import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <div className="bg-stone-50">
       <Head>
         <title>MARARUNGYE</title>
       </Head>
@@ -17,9 +17,9 @@ const Home: NextPage = () => {
       <div className="relative overflow-hidden">
         {/* Hero Content */}
         <div className="max-w-7xl mx-auto lg:h-screen">
-          <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:h-full lg:pb-28 xl:pb-32">
+          <div className="relative z-10 pb-8 bg-stone-50 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:h-full lg:pb-28 xl:pb-32">
             <svg
-              className="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
+              className="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-stone-50 transform translate-x-1/2"
               fill="currentColor"
               viewBox="0 0 100 100"
               preserveAspectRatio="none"
