@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import CuentasDB from "@/DB/cuentas.json";
+import CuentasDB from '@/DB/cuentas.json';
 
-import { AiOutlineBank } from "react-icons/ai";
+import { AiOutlineBank } from 'react-icons/ai';
 
 interface FinalStepProps {
   value?: string;
@@ -20,7 +20,7 @@ export default function FinalStep({
   return (
     <div className='min-h-full flex flex-col'>
       <h2 className='text-xl font-medium text-stone-900'>
-        {error ? "Error en el registro" : "Gracias por registrarse"}
+        {error ? 'Error en el registro' : 'Gracias por registrarse'}
       </h2>
       {error ? (
         <div className='grow mt-6 '>
@@ -65,6 +65,7 @@ export default function FinalStep({
             <a
               href='https://wa.me/5930960760637'
               target='_blank'
+              rel='noreferrer'
               className='ml-1 text-green-500'
             >
               0960760637
