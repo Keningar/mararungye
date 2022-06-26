@@ -72,13 +72,10 @@ const Home: NextPage = () => {
         <div className="relative h-96 md:absolute md:left-0 md:h-full md:w-1/2">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-5/6 w-5/12 md:w-3/4">
             {[
-              [
-                "https://static.wixstatic.com/media/a18606_62e1d7ef32fd4eceb617d247c89eb652~mv2.jpg/v1/fit/w_776,h_506,q_90/a18606_62e1d7ef32fd4eceb617d247c89eb652~mv2.jpg",
-                "-left-2",
-              ],
+              ["/main_runner_1.jpg", "-left-2"],
               ["/main_runner_3.jpeg", "-right-2"],
             ].map((_, i) => (
-              <motion.img
+              <motion.div
                 initial={{
                   opacity: 0,
                   [i == 0 ? "bottom" : "top"]: 50,
@@ -87,17 +84,19 @@ const Home: NextPage = () => {
                   opacity: 1,
                   [i == 0 ? "bottom" : "top"]: 20,
                 }}
-                viewport={{ once: false }}
-                transition={{ duration: 0.9 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
                 key={`about-img-${i}`}
-                className={"absolute object-cover h-full w-1/2 " + _[1]}
-                style={{
-                  objectPosition: "40% 50%",
-                }}
-                draggable={false}
-                src={_[0]}
-                alt=""
-              />
+                className={"absolute h-full w-1/2 " + _[1]}
+              >
+                <Image
+                  src={_[0]}
+                  layout="fill"
+                  objectFit="cover"
+                  className="object-[40%_50%]"
+                  draggable={false}
+                />
+              </motion.div>
             ))}
           </div>
         </div>
@@ -120,7 +119,7 @@ const Home: NextPage = () => {
         </div>
       </div>
       {/* Next Events Section */}
-      <div className="my-20 max-w-7xl mx-auto">
+      <div className="my-20 max-w-7xl mx-auto hidden">
         <h2 className="text-center tracking-tight font-bold text-gray-900 text-3xl sm:text-4xl md:text-5xl">
           <span className="block xl:inline uppercase">proximos eventos</span>
         </h2>

@@ -47,4 +47,8 @@ export function useIsLarge() {
   return useMediaQuery("(min-width: 1024px)");
 }
 
+export function useIsMedium() {
+  return useMediaQuery("(min-width: 768px)");
+}
+
 export default useMediaQuery;

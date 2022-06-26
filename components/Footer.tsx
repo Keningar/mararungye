@@ -2,9 +2,9 @@ import Link from "next/link";
 
 import redesSociales from "@/const/redesSociales";
 
-export default function Example() {
+export default function Example({ className }: { className?: string }) {
   return (
-    <footer className="bg-white">
+    <footer className={className}>
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
         <div className="flex justify-center space-x-6 md:order-2">
           {redesSociales.map((item) => (
@@ -23,7 +23,7 @@ export default function Example() {
         </div>
         <div className="mt-8 md:mt-0 md:order-1">
           <p className="text-center text-base text-gray-400">
-            &copy; 2022 Mararungye. All rights reserved.
+            &copy; 2022 Mararungye. Todos los derechos reservados.
           </p>
         </div>
       </div>

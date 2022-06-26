@@ -1,0 +1,24 @@
+[
+  {
+    "img": "/eventos/event1.jpg",
+    "name": "Locos x El Running 5x",
+    "id": "locos_x_el_running_5x",
+    "fecha": {
+      "dia": 21,
+      "mes": "agosto",
+      "año": 2022,
+      "hora": "6:50 AM"
+    },
+    "lugar": {
+      "ciudad": "guayaquil",
+      "direccion": "parque forestal"
+    },
+    "precios": {
+      "niños": 10,
+      "adultos": 15
+    },
+    "info": "1.5K - 5K",
+    "premio": 50,
+    "descripcion": "Competencia atlética Locos por el running 5k se dará acabo en el parque Forestal en las calles Av. Quito y El Oro grandes premios y sorteos."
+  }
+]

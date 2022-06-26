@@ -1,9 +1,10 @@
 import "../styles/globals.css";
+
 import type { AppLayoutProps } from "next/app";
 
 import React from "react";
 import { getLayout as deafultGetLayout } from "@/components/layouts/DefaultLayout";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 // const deafultGetLayout = (Component: any) => Component;
 
@@ -25,7 +26,9 @@ function MyApp({ Component, pageProps, router }: AppLayoutProps) {
 
   return getLayout(
     <AnimatePresence exitBeforeEnter>
-      <Component {...pageProps} key={router.pathname} />
+      <AnimateSharedLayout>
+        <Component {...pageProps} key={router.pathname} />
+      </AnimateSharedLayout>
     </AnimatePresence>,
     pageProps.layoutProps
   );

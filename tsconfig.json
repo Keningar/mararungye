@@ -18,7 +18,10 @@
     "paths": {
       "@/components/*": ["components/*"],
       "@/utils/*": ["utils/*"],
-      "@/const/*": ["const/*"]
+      "@/const/*": ["const/*"],
+      "@/DB/*": ["DB/*"],
+      "@/stores/*": ["stores/*"],
+      "@/libs/*": ["libs/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
