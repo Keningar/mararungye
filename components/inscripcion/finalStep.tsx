@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 import CuentasDB from '@/DB/cuentas.json';
 
@@ -75,12 +76,11 @@ export default function FinalStep({
       )}
 
       <div className='mt-6 w-full flex justify-end'>
-        <button
-          className='shadow flex items-center justify-center px-6 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:text-lg'
-          onClick={onNext}
-        >
-          Terminar
-        </button>
+        <Link href='/eventos'>
+          <button className='shadow flex items-center justify-center px-6 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:text-lg'>
+            Terminar
+          </button>
+        </Link>
       </div>
     </div>
   );

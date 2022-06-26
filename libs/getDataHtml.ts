@@ -1,5 +1,5 @@
-import { InsData } from "@/libs/types/inscriptionData";
-import { format } from "date-fns";
+import { InsData } from '@/libs/types/inscriptionData';
+import { format } from 'date-fns';
 
 export default function getEmailHtml(data: InsData) {
   const Name = `${data.firstName} ${data.secondName} ${data.lastName} ${data.secondLastName}`;
@@ -322,7 +322,10 @@ export default function getEmailHtml(data: InsData) {
                                                     margin: 0;
                                                   "
                                                 >
-                                                  ${format(data.birthday, 'dd/MM/yyyy')}
+                                                  ${format(
+                                                    new Date(data.birthday),
+                                                    'dd/MM/yyyy'
+                                                  )}
                                                 </p>
 
                                                 <div

@@ -1,41 +1,41 @@
-import type { NextPage } from "next";
-import React from "react";
-import { useRouter } from "next/router";
-import { motion } from "framer-motion";
-import clsx from "clsx";
+import type { NextPage } from 'next';
+import React from 'react';
+import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
+import clsx from 'clsx';
 
-import { EventsStore } from "@/stores/eventsStore";
-import DB_Eventos from "@/DB/eventos.json";
+import { EventsStore } from '@/stores/eventsStore';
+import DB_Eventos from '@/DB/eventos.json';
 
-import Footer from "@/components/Footer";
-import Step0, { step0CheckInputs } from "@/components/inscripcion/step0";
+import Footer from '@/components/Footer';
+import Step0, { step0CheckInputs } from '@/components/inscripcion/step0';
 import Step1, {
   step1Data,
   step1CheckInputs,
-} from "@/components/inscripcion/step1";
+} from '@/components/inscripcion/step1';
 import Step2, {
   step2Data,
   step2CheckInputs,
-} from "@/components/inscripcion/step2";
+} from '@/components/inscripcion/step2';
 import Step3, {
   step3Data,
   step3CheckInputs,
-} from "@/components/inscripcion/step3";
-import Terminos from "@/components/inscripcion/terminos";
-import FinalStep from "@/components/inscripcion/finalStep";
+} from '@/components/inscripcion/step3';
+import Terminos from '@/components/inscripcion/terminos';
+import FinalStep from '@/components/inscripcion/finalStep';
 
-import { IconType } from "react-icons";
+import { IconType } from 'react-icons';
 import {
   AiOutlineUser,
   AiOutlinePhone,
   AiOutlineCheck,
   AiOutlineClose,
-} from "react-icons/ai";
-import { GoLocation } from "react-icons/go";
-import { IoShirtOutline } from "react-icons/io5";
-import { CgFileDocument } from "react-icons/cg";
-import { TbCalendarEvent } from "react-icons/tb";
-import { ArrowCircleLeftIcon as ArrowCircleLeftIconOutline } from "@heroicons/react/outline";
+} from 'react-icons/ai';
+import { GoLocation } from 'react-icons/go';
+import { IoShirtOutline } from 'react-icons/io5';
+import { CgFileDocument } from 'react-icons/cg';
+import { TbCalendarEvent } from 'react-icons/tb';
+import { ArrowCircleLeftIcon as ArrowCircleLeftIconOutline } from '@heroicons/react/outline';
 
 interface InscriptionData {
   step1: step1Data;
@@ -45,7 +45,7 @@ interface InscriptionData {
 }
 
 const twoColumnsStyle =
-  "bg-white py-10 px-6 sm:px-10 lg:drop-shadow-md lg:rounded-lg";
+  'bg-white py-10 px-6 sm:px-10 lg:drop-shadow-md lg:rounded-lg';
 
 const steps: {
   name: string;
@@ -54,31 +54,31 @@ const steps: {
   check: (val: any) => boolean;
 }[] = [
   {
-    name: "Evento",
+    name: 'Evento',
     icon: TbCalendarEvent,
     form: Step0,
     check: step0CheckInputs,
   },
   {
-    name: "Información Personal",
+    name: 'Información Personal',
     icon: AiOutlineUser,
     form: Step1,
     check: step1CheckInputs,
   },
   {
-    name: "Información de Contacto",
+    name: 'Información de Contacto',
     icon: AiOutlinePhone,
     form: Step2,
     check: step2CheckInputs,
   },
   {
-    name: "Dirección",
+    name: 'Dirección',
     icon: GoLocation,
     form: Step3,
     check: step3CheckInputs,
   },
   {
-    name: "Terminos y condiciones",
+    name: 'Terminos y condiciones',
     icon: CgFileDocument,
     form: Terminos,
     check: () => true,
@@ -89,7 +89,7 @@ const steps: {
   //   form: Step1,
   // },
   {
-    name: "Registro terminado",
+    name: 'Registro terminado',
     icon: AiOutlineCheck,
     form: FinalStep,
     check: step0CheckInputs,
@@ -136,10 +136,10 @@ const Inscripcion: NextPage = () => {
     if (selectedStep == steps.length - 2 && !dataHasSend.loading) {
       setDataHasSend(_ => ({ ..._, loading: true }));
 
-      const res = await fetch("/api/inscription", {
-        method: "POST",
+      const res = await fetch('/api/inscription', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           event: DB_Eventos.find(_ => _.id == selectedEvent)?.name,
@@ -148,14 +148,19 @@ const Inscripcion: NextPage = () => {
           ...inscriptionData[getStepName(3)],
         }),
       });
-      console.log(res);
+      const resJson = await res.json();
 
+      // Test
       // const res = await new Promise<boolean>((resolve, reject) => {
       //   setTimeout(() => {
       //     resolve(false);
       //   }, 3000);
       // });
-      setDataHasSend(_ => ({ ..._, loading: false }));
+      setDataHasSend({
+        loading: false,
+        error: resJson.err,
+        data: resJson.info,
+      });
     }
 
     setCurrentStepCompleted();
@@ -196,7 +201,7 @@ const Inscripcion: NextPage = () => {
       <div className='max-w-7xl mx-auto pb-8 xl:pb-12'>
         <div className='grid h-full lg:px-12 lg:grid-cols-3 lg:gap-8'>
           {/* Stepper */}
-          <div className={clsx(twoColumnsStyle, "h-fit lg:px-10 xl:pl-16")}>
+          <div className={clsx(twoColumnsStyle, 'h-fit lg:px-10 xl:pl-16')}>
             <ul className='flex justify-between items-center lg:flex-col lg:justify-start lg:items-start'>
               {steps.map((_, i) => (
                 <React.Fragment key={`${_.name} - step`}>
@@ -204,8 +209,8 @@ const Inscripcion: NextPage = () => {
                     <span
                       key={`${_.name} - step bar`}
                       className={clsx(
-                        "w-full h-0.5 lg:h-12 lg:w-0.5 lg:ml-5",
-                        i <= selectedStep ? "bg-indigo-300" : "bg-gray-300"
+                        'w-full h-0.5 lg:h-12 lg:w-0.5 lg:ml-5',
+                        i <= selectedStep ? 'bg-indigo-300' : 'bg-gray-300'
                       )}
                     />
                   )}
@@ -214,7 +219,7 @@ const Inscripcion: NextPage = () => {
                     className='relative flex items-center cursor-pointer'
                     onClick={_ => {
                       if (
-                        i < selectedStep ||
+                        (i < selectedStep && !dataHasSend.data) ||
                         (i > selectedStep && prevStepsHasBeenCompleted(i))
                       )
                         return setSelectedStep(i);
@@ -230,19 +235,19 @@ const Inscripcion: NextPage = () => {
                       animate={
                         i == selectedStep
                           ? {
-                              backgroundColor: "rgb(255, 255, 255)",
-                              color: "rgb(129, 140, 248)",
+                              backgroundColor: 'rgb(255, 255, 255)',
+                              color: 'rgb(129, 140, 248)',
                               borderWidth: 1,
-                              borderColor: "rgb(129, 140, 248)",
+                              borderColor: 'rgb(129, 140, 248)',
                             }
                           : i < selectedStep
                           ? {
-                              backgroundColor: "rgb(129, 140, 248)",
-                              color: "rgb(255, 255, 255)",
+                              backgroundColor: 'rgb(129, 140, 248)',
+                              color: 'rgb(255, 255, 255)',
                             }
                           : {
-                              backgroundColor: "rgb(255, 255, 255)",
-                              color: "rgb(156, 163, 175)",
+                              backgroundColor: 'rgb(255, 255, 255)',
+                              color: 'rgb(156, 163, 175)',
                             }
                       }
                     >
@@ -259,7 +264,7 @@ const Inscripcion: NextPage = () => {
             </ul>
           </div>
           {/* Step info form */}
-          <div className={clsx(twoColumnsStyle, "lg:col-span-2 xl:p-12")}>
+          <div className={clsx(twoColumnsStyle, 'lg:col-span-2 xl:p-12')}>
             <SelectedForm
               value={
                 selectedStep == 0
