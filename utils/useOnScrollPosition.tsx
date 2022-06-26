@@ -1,6 +1,11 @@
-import React from "react";
+import React from 'react';
 
-export default function useOnScrollPosition(y: number) {
+export default function useOnScrollPosition(
+  y: number,
+  dis?: boolean,
+  def?: boolean
+) {
+  if (dis) return def;
   const [reachedPosition, setReachedPosition] = React.useState(false);
 
   React.useEffect(() => {
@@ -11,9 +16,9 @@ export default function useOnScrollPosition(y: number) {
         setReachedPosition(false);
       }
     };
-    window.addEventListener("scroll", updatePosition);
+    window.addEventListener('scroll', updatePosition);
     updatePosition();
-    return () => window.removeEventListener("scroll", updatePosition);
+    return () => window.removeEventListener('scroll', updatePosition);
   }, []);
 
   return reachedPosition;

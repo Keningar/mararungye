@@ -35,7 +35,7 @@ const Evento: NextPage = () => {
   const { scrollYProgress } = useViewportScroll();
   const final_des_y = useTransform(scrollYProgress, [0, 1], [0, -150]);
   const isLarge = useIsLarge();
-  const reachPosition = isLarge ? false : useOnScrollPosition(316);
+  const reachPosition = useOnScrollPosition(316, isLarge, false);
 
   const [evento, setEvento] = React.useState<typeof DB_Eventos[0]>();
 
@@ -44,7 +44,7 @@ const Evento: NextPage = () => {
   React.useEffect(() => {
     setEvento(DB_Eventos.find(_ => _.id == id));
   }, [id]);
-
+  
   return (
     <div
       className={clsx(
