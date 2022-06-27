@@ -194,6 +194,62 @@ export default function getEmailHtml(data: InsData) {
                                                 ${data.event}
                                               </p>
                                               <div
+                                              style="height: 16px"
+                                            ></div>
+                                        <h4
+                                        style="
+                                          box-sizing: border-box;
+                                          border-width: 0;
+                                          border-style: solid;
+                                          border-color: #e5e7eb;
+                                          font-weight: 600;
+                                          margin: 0;
+                                        "
+                                      >
+                                      Distancia:
+                                      </h4>
+                                      <p
+                                        style="
+                                          box-sizing: border-box;
+                                          border-width: 0;
+                                          border-style: solid;
+                                          border-color: #e5e7eb;
+                                          margin: 0;
+                                        "
+                                      >
+                                        ${data.distancia}
+                                      </p>
+                                              <div
+                                                    style="height: 16px"
+                                                  ></div>
+                                              <h4
+                                              style="
+                                                box-sizing: border-box;
+                                                border-width: 0;
+                                                border-style: solid;
+                                                border-color: #e5e7eb;
+                                                font-weight: 600;
+                                                margin: 0;
+                                              "
+                                            >
+                                            Empresa/Club/Grupo:
+                                            </h4>
+                                            <p
+                                              style="
+                                                box-sizing: border-box;
+                                                border-width: 0;
+                                                border-style: solid;
+                                                border-color: #e5e7eb;
+                                                margin: 0;
+                                              "
+                                            >
+                                              ${
+                                                data.grupo == ''
+                                                  ? 'Ninguno'
+                                                  : data.grupo
+                                              }
+                                            </p>
+                                              <div
                                                     style="height: 16px"
                                                   ></div>
                                                   <h4
@@ -408,6 +464,58 @@ export default function getEmailHtml(data: InsData) {
                                           >
                                             ${data.sex}
                                           </p>
+                                          <div
+                                          style="height: 16px"
+                                        ></div>
+                                    <h4
+                                    style="
+                                      box-sizing: border-box;
+                                      border-width: 0;
+                                      border-style: solid;
+                                      border-color: #e5e7eb;
+                                      font-weight: 600;
+                                      margin: 0;
+                                    "
+                                  >
+                                  Capacidad especial:
+                                  </h4>
+                                  <p
+                                    style="
+                                      box-sizing: border-box;
+                                      border-width: 0;
+                                      border-style: solid;
+                                      border-color: #e5e7eb;
+                                      margin: 0;
+                                    "
+                                  >
+                                    ${data.especial}
+                                  </p>
+                                  <div
+                                  style="height: 16px"
+                                ></div>
+                            <h4
+                            style="
+                              box-sizing: border-box;
+                              border-width: 0;
+                              border-style: solid;
+                              border-color: #e5e7eb;
+                              font-weight: 600;
+                              margin: 0;
+                            "
+                          >
+                          Talla:
+                          </h4>
+                          <p
+                            style="
+                              box-sizing: border-box;
+                              border-width: 0;
+                              border-style: solid;
+                              border-color: #e5e7eb;
+                              margin: 0;
+                            "
+                          >
+                            ${data.talla}
+                          </p>
                                                 </td>
                                               </tr>
                                             </tbody>

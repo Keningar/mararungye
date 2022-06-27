@@ -1,23 +1,25 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import nodemailer from 'nodemailer';
 
-import { InsData } from '@/libs/types/inscriptionData';
+import type { InsData } from '@/libs/types/inscriptionData';
 import getDataHtml from '@/libs/getDataHtml';
 import getEmailHtml from '@/libs/getEmailHtml';
+import { AnyRecord } from 'dns';
 
 // mararungye@gmail.com - 0969866519 - ygpdvvgievgffzmk
 // kenencalada@gmail.com - yoxvrfdwaipfckao
 
-const correo = 'tech@mararungye.com';
+const correoDomain = 'tech@mararungye.com';
+const correo = 'mararungye@gmail.com';
 const trans = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'mararungye@gmail.com',
+    user: correo,
     pass: 'ygpdvvgievgffzmk',
   },
 });
 
-const mockInsData: InsData = {
+const mockInsData: any = {
   address: 'villa bonita mz 5049',
   age: '22',
   ci: '12345',
@@ -40,7 +42,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     trans.sendMail(
       {
-        from: correo,
+        from: correoDomain,
         to: insData.email,
         subject: `Inscripción al evento de mararungye: ${insData.event}`,
         html: getEmailHtml(insData),

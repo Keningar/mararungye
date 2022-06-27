@@ -8,7 +8,10 @@ import { EventsStore } from '@/stores/eventsStore';
 import DB_Eventos from '@/DB/eventos.json';
 
 import Footer from '@/components/Footer';
-import Step0, { step0CheckInputs } from '@/components/inscripcion/step0';
+import Step0, {
+  step0Data,
+  step0CheckInputs,
+} from '@/components/inscripcion/step0';
 import Step1, {
   step1Data,
   step1CheckInputs,
@@ -21,6 +24,10 @@ import Step3, {
   step3Data,
   step3CheckInputs,
 } from '@/components/inscripcion/step3';
+import Shirt, {
+  shirtData,
+  shirtCheckInputs,
+} from '@/components/inscripcion/shirt';
 import Terminos from '@/components/inscripcion/terminos';
 import FinalStep from '@/components/inscripcion/finalStep';
 
@@ -38,9 +45,11 @@ import { TbCalendarEvent } from 'react-icons/tb';
 import { ArrowCircleLeftIcon as ArrowCircleLeftIconOutline } from '@heroicons/react/outline';
 
 interface InscriptionData {
+  step0: step0Data;
   step1: step1Data;
   step2: step2Data;
   step3: step3Data;
+  step4: shirtData;
   [step: string]: any;
 }
 
@@ -78,16 +87,17 @@ const steps: {
     check: step3CheckInputs,
   },
   {
+    name: 'Camiseta e información deportiva',
+    icon: IoShirtOutline,
+    form: Shirt,
+    check: shirtCheckInputs,
+  },
+  {
     name: 'Terminos y condiciones',
     icon: CgFileDocument,
     form: Terminos,
     check: () => true,
   },
-  // {
-  //   name: "Personalización Camisa",
-  //   icon: IoShirtOutline,
-  //   form: Step1,
-  // },
   {
     name: 'Registro terminado',
     icon: AiOutlineCheck,
@@ -110,7 +120,11 @@ const Inscripcion: NextPage = () => {
   );
   const [inscriptionData, setInscriptionData] = React.useState<
     Partial<InscriptionData>
-  >({});
+  >({
+    step0: {
+      event: selectedEvent as string,
+    },
+  });
   const [dataHasSend, setDataHasSend] = React.useState<{
     loading: boolean;
     error: boolean;
@@ -120,9 +134,7 @@ const Inscripcion: NextPage = () => {
   const getStepName = (i?: number) => `step${i ?? selectedStep}`;
 
   const isFormValid = () =>
-    steps[selectedStep].check(
-      selectedStep == 0 ? selectedEvent : inscriptionData[getStepName()]
-    );
+    steps[selectedStep].check(inscriptionData[getStepName()]);
   const prevStepsHasBeenCompleted = (step: number) =>
     completedStep.slice(0, step).every(_ => _ === true);
   const setCurrentStepCompleted = () => {
@@ -143,9 +155,11 @@ const Inscripcion: NextPage = () => {
         },
         body: JSON.stringify({
           event: DB_Eventos.find(_ => _.id == selectedEvent)?.name,
+          ...inscriptionData[getStepName(0)],
           ...inscriptionData[getStepName(1)],
           ...inscriptionData[getStepName(2)],
           ...inscriptionData[getStepName(3)],
+          ...inscriptionData[getStepName(4)],
         }),
       });
       const resJson = await res.json();
@@ -170,13 +184,8 @@ const Inscripcion: NextPage = () => {
   const previusStep = () => {
     if (!dataHasSend.loading) setSelectedStep(_ => Math.max(_ - 1, 0));
   };
-  const onChange = (_: any) => {
-    if (selectedStep == 0) {
-      changeSelectedEvent(_);
-    } else {
-      setInscriptionData({ ...inscriptionData, [getStepName()]: _ });
-    }
-  };
+  const onChange = (_: any) =>
+    setInscriptionData({ ...inscriptionData, [getStepName()]: _ });
 
   const SelectedForm = steps[selectedStep].form;
 
@@ -266,11 +275,7 @@ const Inscripcion: NextPage = () => {
           {/* Step info form */}
           <div className={clsx(twoColumnsStyle, 'lg:col-span-2 xl:p-12')}>
             <SelectedForm
-              value={
-                selectedStep == 0
-                  ? selectedEvent
-                  : (inscriptionData[getStepName()] as any)
-              }
+              value={inscriptionData[getStepName()] as any}
               onChange={onChange}
               onNext={nextStep}
               onPrev={previusStep}

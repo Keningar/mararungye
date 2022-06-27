@@ -44,7 +44,7 @@ const Evento: NextPage = () => {
   React.useEffect(() => {
     setEvento(DB_Eventos.find(_ => _.id == id));
   }, [id]);
-  
+
   return (
     <div
       className={clsx(
