@@ -1,6 +1,9 @@
 [
   {
-    "img": "/eventos/event1.jpg",
+    "img": {
+      "card": "/eventos/e1/card.jpg",
+      "cover": "/eventos/e1/cover.jpeg"
+    },
     "name": "Locos x El Running 5x",
     "id": "locos_x_el_running_5x",
     "fecha": {

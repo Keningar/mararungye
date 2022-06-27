@@ -86,7 +86,7 @@ const Evento: NextPage = () => {
               className='fixed w-full h-96 lg:relative'
             >
               <Image
-                src={evento.img}
+                src={evento.img.cover}
                 layout='fill'
                 objectFit='cover'
                 draggable={false}

@@ -95,7 +95,7 @@ const Eventos: NextPage = () => {
                     variants={A_image}
                   >
                     <Image
-                      src={_.img}
+                      src={_.img.cover}
                       layout='fill'
                       objectFit='cover'
                       draggable={false}
