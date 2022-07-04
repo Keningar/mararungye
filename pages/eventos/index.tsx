@@ -1,13 +1,13 @@
-import type { NextPage } from "next";
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { motion } from "framer-motion";
+import type { NextPage } from 'next';
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
-import DB_Eventos from "@/DB/eventos.json";
+import DB_Eventos from '@/DB/eventos.json';
 
 const A_header = {
   first: {
@@ -27,15 +27,15 @@ const A_header = {
 };
 const A_overlay = {
   hover: {
-    transform: "scale(1)",
+    transform: 'scale(1)',
   },
 };
 const A_image = {
   animate: {
-    transform: "scale(1)",
+    transform: 'scale(1)',
   },
   hover: {
-    transform: "scale(1.3)",
+    transform: 'scale(1.3)',
   },
 };
 
@@ -68,7 +68,7 @@ const Eventos: NextPage = () => {
               animate='in'
               transition={{
                 duration: 1.2,
-                ease: "easeOut",
+                ease: 'easeOut',
               }}
             >
               EVENTOS

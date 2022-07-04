@@ -45,6 +45,56 @@ const Evento: NextPage = () => {
     setEvento(DB_Eventos.find(_ => _.id == id));
   }, [id]);
 
+  const detailIcons = !evento
+    ? []
+    : [
+        {
+          name: 'Fecha',
+          icon: (
+            <ClockIcon className='flex-shrink-0 w-6 h-6' aria-hidden='true' />
+          ),
+          value: `${StringUtils.setWord(evento.fecha.mes)
+            .capitalize()
+            .getWord()} ${evento.fecha.dia}, ${evento.fecha.año} ${
+            evento.fecha.hora
+          }`,
+        },
+        {
+          name: 'Lugar',
+          icon: (
+            <LocationMarkerIcon
+              className='flex-shrink-0 w-6 h-6'
+              aria-hidden='true'
+            />
+          ),
+          value: `${StringUtils.setWord(evento.lugar.ciudad)
+            .capitalize()
+            .getWord()}, ${evento.lugar.direccion}`,
+        },
+        {
+          name: 'Precio',
+          icon: (
+            <CurrencyDollarIcon
+              className='flex-shrink-0 w-6 h-6'
+              aria-hidden='true'
+            />
+          ),
+          value: `$${evento.precios.adultos} adultos $${evento.precios.niños} niños`,
+        },
+      ];
+
+  if (evento?.info)
+    detailIcons.push({
+      name: 'Distancia',
+      icon: (
+        <InformationCircleIcon
+          className='flex-shrink-0 w-6 h-6'
+          aria-hidden='true'
+        />
+      ),
+      value: evento.info,
+    });
+
   return (
     <div
       className={clsx(
@@ -108,54 +158,7 @@ const Evento: NextPage = () => {
               {/* Sub info */}
               <div className='flex justify-between items-center'>
                 <dl className='my-6 space-y-2 w-full flex justify-between lg:block lg:w-fit'>
-                  {[
-                    {
-                      name: 'Fecha',
-                      icon: (
-                        <ClockIcon
-                          className='flex-shrink-0 w-6 h-6'
-                          aria-hidden='true'
-                        />
-                      ),
-                      value: `${StringUtils.setWord(evento.fecha.mes)
-                        .capitalize()
-                        .getWord()} ${evento.fecha.dia}, ${evento.fecha.año} ${
-                        evento.fecha.hora
-                      }`,
-                    },
-                    {
-                      name: 'Lugar',
-                      icon: (
-                        <LocationMarkerIcon
-                          className='flex-shrink-0 w-6 h-6'
-                          aria-hidden='true'
-                        />
-                      ),
-                      value: `${StringUtils.setWord(evento.lugar.ciudad)
-                        .capitalize()
-                        .getWord()}, ${evento.lugar.direccion}`,
-                    },
-                    {
-                      name: 'Precio',
-                      icon: (
-                        <CurrencyDollarIcon
-                          className='flex-shrink-0 w-6 h-6'
-                          aria-hidden='true'
-                        />
-                      ),
-                      value: `$${evento.precios.adultos} adultos $${evento.precios.niños} niños`,
-                    },
-                    {
-                      name: 'Distancia',
-                      icon: (
-                        <InformationCircleIcon
-                          className='flex-shrink-0 w-6 h-6'
-                          aria-hidden='true'
-                        />
-                      ),
-                      value: evento.info,
-                    },
-                  ].map((_, i, arr) =>
+                  {detailIcons.map((_, i, arr) =>
                     i == 2 && !isLarge ? null : (
                       <React.Fragment key={_.name}>
                         <dt>
@@ -180,7 +183,13 @@ const Evento: NextPage = () => {
                       changeSelectedEvent(evento.id);
                       routerPush('/inscripcion');
                     }}
-                    className='w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10'
+                    disabled={!evento.abierto}
+                    className={clsx(
+                      'w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white md:py-4 md:text-lg md:px-10',
+                      evento.abierto
+                        ? 'bg-indigo-600 hover:bg-indigo-700'
+                        : 'bg-gray-600'
+                    )}
                   >
                     Inscribirse
                   </button>
@@ -192,7 +201,11 @@ const Evento: NextPage = () => {
                 <h2 className='font-semibold text-gray-900 text-xl mb-2'>
                   Descripción
                 </h2>
-                <div>{evento.descripcion}</div>
+                <div>
+                  {evento.descripcion.map(_ => (
+                    <p>{_}</p>
+                  ))}
+                </div>
               </div>
 
               <Footer className='mb-8 lg:hidden' />
