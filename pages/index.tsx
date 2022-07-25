@@ -9,7 +9,7 @@ import Footer from '@/components/Footer';
 
 const Home: NextPage = () => {
   return (
-    <div className='bg-stone-50'>
+    <div className='bg-indigo-300 sm:bg-stone-50'>
       <Head>
         <title>MARARUNGYE</title>
       </Head>
@@ -17,7 +17,7 @@ const Home: NextPage = () => {
       <div className='relative overflow-hidden'>
         {/* Hero Content */}
         <div className='max-w-7xl mx-auto lg:h-screen'>
-          <div className='relative z-10 pb-8 bg-stone-50 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:h-full lg:pb-28 xl:pb-32'>
+          <div className='relative z-10 pb-8 bg-indigo-300 sm:bg-stone-50 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:h-full lg:pb-28 xl:pb-32'>
             <svg
               className='hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-stone-50 transform translate-x-1/2'
               fill='currentColor'
@@ -30,7 +30,7 @@ const Home: NextPage = () => {
 
             <Navbar />
 
-            <main className='mt-28 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28'>
+            <main className='bg-stone-50 rounded-xl w-11/12 p-4 mt-12 mx-auto max-w-7xl sm:rounded-none sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28'>
               <div className='sm:text-center lg:text-left'>
                 <h1 className='text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl'>
                   <span className='block xl:inline'>NACIMOS PARA</span>
@@ -101,7 +101,7 @@ const Home: NextPage = () => {
             ))}
           </div>
         </div>
-        <div className=' w-full px-4 py-12 sm:px-6 md:px-8 lg:py-0 lg:h-full lg:flex lg:items-center lg:justify-end'>
+        <div className='bg-stone-50 rounded-xl w-11/12 mx-auto px-4 py-12 sm:rounded-none sm:w-full sm:px-6 md:px-8 lg:py-0 lg:h-full lg:flex lg:items-center lg:justify-end'>
           <div className=' md:ml-auto md:pl-10 md:w-1/2'>
             <h2 className='mt-2 text-black text-3xl font-extrabold tracking-tight sm:text-4xl'>
               Sobre Nosotros
@@ -145,7 +145,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      <Footer clases={{ icons: 'text-black' }} />
     </div>
   );
 };
