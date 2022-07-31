@@ -7,7 +7,7 @@ https://github.com/its-danny/use-lilius
 https://github.com/msnegurski/tailwind-react-datepicker
 */
 
-import React from "react";
+import React from 'react';
 import {
   format,
   subMonths,
@@ -17,20 +17,21 @@ import {
   getDaysInMonth,
   getDay,
   getYear,
-} from "date-fns";
-import { es } from "date-fns/locale";
-import clsx from "clsx";
-import { usePopper } from "react-popper";
-import { Dialog, Transition } from "@headlessui/react";
-import ClickAwayListener from "react-click-away-listener";
+  lastDayOfMonth,
+} from 'date-fns';
+import { es } from 'date-fns/locale';
+import clsx from 'clsx';
+import { usePopper } from 'react-popper';
+import { Dialog, Transition } from '@headlessui/react';
+import ClickAwayListener from 'react-click-away-listener';
 
-import range from "@/utils/Range";
-import { useIsMedium } from "@/utils/useMediaQuery";
+import range from '@/utils/Range';
+import { useIsMedium } from '@/utils/useMediaQuery';
 
-import { CheckIcon } from "@heroicons/react/outline";
+import { CheckIcon } from '@heroicons/react/outline';
 
-type DatepickerType = "fecha" | "mes" | "año";
-const DAYS = ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"];
+type DatepickerType = 'fecha' | 'mes' | 'año';
+const DAYS = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
 
 const getYearRange = (year?: number) => {
   const currentYear = year ?? getYear(new Date());
@@ -60,7 +61,7 @@ export default function Datepicker({ startDate, onChange }: DatepickerProps) {
   const [selectedDate, setSelectedDate] = React.useState(
     startDate ?? new Date()
   );
-  const [type, setType] = React.useState<DatepickerType>("fecha");
+  const [type, setType] = React.useState<DatepickerType>('fecha');
 
   const [referenceElement, setReferenceElement] =
     React.useState<HTMLInputElement | null>(null);
@@ -68,7 +69,7 @@ export default function Datepicker({ startDate, onChange }: DatepickerProps) {
   const { styles, attributes } = usePopper(referenceElement, popperElement, {
     modifiers: [
       {
-        name: "offset",
+        name: 'offset',
         options: {
           offset: [0, 32],
         },
@@ -78,13 +79,13 @@ export default function Datepicker({ startDate, onChange }: DatepickerProps) {
 
   const decrement = () => {
     switch (type) {
-      case "fecha":
+      case 'fecha':
         setDatepickerHeaderDate(prev => subMonths(prev, 1));
         break;
-      case "mes":
+      case 'mes':
         setDatepickerHeaderDate(prev => subYears(prev, 1));
         break;
-      case "año":
+      case 'año':
         setYearRange(getYearRange(yearRange[0] - 1));
         break;
     }
@@ -92,13 +93,13 @@ export default function Datepicker({ startDate, onChange }: DatepickerProps) {
 
   const increment = () => {
     switch (type) {
-      case "fecha":
+      case 'fecha':
         setDatepickerHeaderDate(prev => addMonths(prev, 1));
         break;
-      case "mes":
+      case 'mes':
         setDatepickerHeaderDate(prev => addYears(prev, 1));
         break;
-      case "año":
+      case 'año':
         setYearRange(getYearRange(yearRange[yearRange.length - 1] + 1));
         break;
     }
@@ -139,14 +140,18 @@ export default function Datepicker({ startDate, onChange }: DatepickerProps) {
   const isSelectedMonth = (month: number) => selectedDate.getMonth() == month;
 
   const setMonthValue = (month: number) => () => {
+    const lastMonthDay = lastDayOfMonth(
+      new Date(datepickerHeaderDate.getFullYear(), month, 1)
+    ).getDate();
+    const pickerDate = datepickerHeaderDate.getDate();
     setDatepickerHeaderDate(
       new Date(
         datepickerHeaderDate.getFullYear(),
         month,
-        datepickerHeaderDate.getDate()
+        pickerDate > lastMonthDay ? lastMonthDay : pickerDate
       )
     );
-    setType("fecha");
+    setType('fecha');
   };
 
   const isSelectedYear = (year: number) => selectedDate.getFullYear() == year;
@@ -159,14 +164,14 @@ export default function Datepicker({ startDate, onChange }: DatepickerProps) {
         datepickerHeaderDate.getDate()
       )
     );
-    setType("fecha");
+    setType('fecha');
   };
 
   const toggleDatepicker = () => setShowDatepicker(prev => !prev);
 
-  const showMonthPicker = () => setType("mes");
+  const showMonthPicker = () => setType('mes');
 
-  const showYearPicker = () => setType("año");
+  const showYearPicker = () => setType('año');
 
   React.useEffect(() => {
     getDayCount(datepickerHeaderDate);
@@ -196,28 +201,28 @@ export default function Datepicker({ startDate, onChange }: DatepickerProps) {
           </svg>
         </div>
         {/* Show Month */}
-        {type === "fecha" && (
+        {type === 'fecha' && (
           <div
             onClick={showMonthPicker}
             className='grow p-1 text-lg font-bold text-gray-800 cursor-pointer hover:bg-gray-200 rounded-lg'
           >
             <p className='text-center'>
-              {format(datepickerHeaderDate, "MMMM")}
+              {format(datepickerHeaderDate, 'MMMM')}
             </p>
           </div>
         )}
         {/* Show Year */}
-        {type != "año" && (
+        {type != 'año' && (
           <div
             onClick={showYearPicker}
             className='grow p-1 text-lg font-bold text-gray-800 cursor-pointer hover:bg-gray-200 rounded-lg'
           >
             <p className='text-center'>
-              {format(datepickerHeaderDate, "yyyy")}
+              {format(datepickerHeaderDate, 'yyyy')}
             </p>
           </div>
         )}
-        {type === "año" && (
+        {type === 'año' && (
           <div
             onClick={showYearPicker}
             className='grow p-1 text-lg font-bold text-gray-800'
@@ -248,7 +253,7 @@ export default function Datepicker({ startDate, onChange }: DatepickerProps) {
         </div>
       </div>
 
-      {type === "fecha" && (
+      {type === 'fecha' && (
         <>
           <div className='grid grid-cols-7 mb-3 -mx-1'>
             {DAYS.map((day, i) => (
@@ -271,10 +276,10 @@ export default function Datepicker({ startDate, onChange }: DatepickerProps) {
                 <div
                   onClick={setDateValue(d)}
                   className={clsx(
-                    "cursor-pointer flex justify-center items-center text-sm rounded-full leading-loose transition ease-in-out duration-100 h-10 md:h-7",
+                    'cursor-pointer flex justify-center items-center text-sm rounded-full leading-loose transition ease-in-out duration-100 h-10 md:h-7',
                     isToday(d)
-                      ? "bg-blue-600 text-white"
-                      : "text-gray-700 hover:bg-blue-200"
+                      ? 'bg-blue-600 text-white'
+                      : 'text-gray-700 hover:bg-blue-200'
                   )}
                 >
                   {d}
@@ -284,46 +289,44 @@ export default function Datepicker({ startDate, onChange }: DatepickerProps) {
           </div>
         </>
       )}
-      {type === "mes" && (
+      {type === 'mes' && (
         <div className='flex flex-wrap -mx-1'>
           {Array(12)
             .fill(null)
-            .map((_, i) => (
-              <div key={i} onClick={setMonthValue(i)} className='w-1/4'>
-                <div
-                  className={clsx(
-                    "cursor-pointer rounded-lg p-5 font-semibold text-center text-sm capitalize hover:bg-gray-200",
-                    isSelectedMonth(i)
-                      ? "bg-indigo-500 text-white hover:bg-indigo-400"
-                      : "text-gray-700 hover:bg-indigo-200"
-                  )}
-                >
-                  {format(
-                    new Date(
-                      datepickerHeaderDate.getFullYear(),
-                      i,
-                      datepickerHeaderDate.getDate()
-                    ),
-                    "MMM",
-                    {
-                      locale: es,
-                    }
-                  )}
+            .map((_, i) => {
+              return (
+                <div key={i} onClick={setMonthValue(i)} className='w-1/4'>
+                  <div
+                    className={clsx(
+                      'cursor-pointer rounded-lg p-5 font-semibold text-center text-sm capitalize hover:bg-gray-200',
+                      isSelectedMonth(i)
+                        ? 'bg-indigo-500 text-white hover:bg-indigo-400'
+                        : 'text-gray-700 hover:bg-indigo-200'
+                    )}
+                  >
+                    {format(
+                      new Date(datepickerHeaderDate.getFullYear(), i, 1),
+                      'MMM',
+                      {
+                        locale: es,
+                      }
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
         </div>
       )}
-      {type === "año" && (
+      {type === 'año' && (
         <div className='flex flex-wrap -mx-1'>
           {yearRange.map(_ => (
             <div key={_} onClick={setYearValue(_)} className='w-1/4'>
               <div
                 className={clsx(
-                  "cursor-pointer rounded-lg px-3 py-4 font-semibold text-center text-sm capitalize hover:bg-gray-200",
+                  'cursor-pointer rounded-lg px-3 py-4 font-semibold text-center text-sm capitalize hover:bg-gray-200',
                   isSelectedYear(_)
-                    ? "bg-indigo-500 text-white hover:bg-indigo-400"
-                    : "text-gray-700 hover:bg-indigo-200"
+                    ? 'bg-indigo-500 text-white hover:bg-indigo-400'
+                    : 'text-gray-700 hover:bg-indigo-200'
                 )}
               >
                 {_}
@@ -343,11 +346,11 @@ export default function Datepicker({ startDate, onChange }: DatepickerProps) {
         readOnly
         className='py-3 px-4 block w-full shadow-sm text-stone-900 focus:ring-indigo-500 focus:border-indigo-500 border-stone-300 rounded-md'
         placeholder='Select date'
-        value={format(selectedDate, "dd/MM/yyyy")}
+        value={format(selectedDate, 'dd/MM/yyyy')}
         onClick={toggleDatepicker}
         ref={setReferenceElement}
         onKeyDown={_ => {
-          if (_.code == "Enter") toggleDatepicker();
+          if (_.code == 'Enter') toggleDatepicker();
         }}
       />
       <div

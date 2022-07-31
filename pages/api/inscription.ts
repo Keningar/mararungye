@@ -4,18 +4,20 @@ import nodemailer from 'nodemailer';
 import type { InsData } from '@/libs/types/inscriptionData';
 import getDataHtml from '@/libs/getDataHtml';
 import getEmailHtml from '@/libs/getEmailHtml';
-import { AnyRecord } from 'dns';
 
 // mararungye@gmail.com - 0969866519 - ygpdvvgievgffzmk
 // kenencalada@gmail.com - yoxvrfdwaipfckao
 
-const correoDomain = 'tech@mararungye.com';
-const correo = 'mararungye@gmail.com';
+const isDevelop = process.env.NODE_ENV == 'development';
+const correoDomain = isDevelop
+  ? 'kenencalada@gmail.com'
+  : 'tech@mararungye.com';
+const correo = isDevelop ? 'kenencalada@gmail.com' : 'mararungye@gmail.com';
 const trans = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: correo,
-    pass: 'ygpdvvgievgffzmk',
+    pass: isDevelop ? 'yoxvrfdwaipfckao' : 'ygpdvvgievgffzmk',
   },
 });
 
