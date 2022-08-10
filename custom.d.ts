@@ -59,3 +59,5 @@ declare module "auto-zustand-selectors-hook" {
     >}`]: () => BaseType[Key];
   };
 }
+
+declare module "@farfetch/react-carousel";
