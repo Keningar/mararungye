@@ -3,6 +3,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import clsx from "clsx";
+import ModalMessage from "@/components/ModalMessage";
 
 import { EventsStore } from "@/stores/eventsStore";
 import DB_Eventos from "@/DB/eventos.json";
@@ -31,6 +32,7 @@ import Shirt, {
 import Terminos from "@/components/inscripcion/terminos";
 import FinalStep from "@/components/inscripcion/finalStep";
 
+// ICONS
 import { IconType } from "react-icons";
 import {
   AiOutlineUser,
@@ -186,6 +188,8 @@ const Inscripcion: NextPage = () => {
 
   return (
     <div className="min-h-screen lg:bg-stone-100">
+      <ModalMessage />
+
       <ArrowCircleLeftIconOutline
         className="fixed top-6 left-6 z-10 w-8 h-8 cursor-pointer"
         onClick={goBack}
