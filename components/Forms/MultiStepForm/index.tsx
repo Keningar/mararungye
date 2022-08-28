@@ -37,7 +37,7 @@ const defaultPrevButton = (onPrevClick: () => void) => (
 );
 const defaultNextButton = ({ isLastStep }: NextButtonProps) => (
   <button
-    type="submit"
+    type='submit'
     // disabled={isLastStep ? !isPreviousStepsValid : false}
   >
     {isLastStep ? "Submit" : "Next"}
@@ -69,14 +69,14 @@ export default function MultiStepForm<T = {}>(props: MultiStepFormProps<T>) {
       setFormState(values);
       onNext?.({ values, nextIndex, helpers: _, isLastStep });
     },
-    [step, setStep, setFormState, lastStepIndex, isLastStep]
+    [step, setStep, setFormState, lastStepIndex, isLastStep, onNext]
   );
 
   const onPrevClick = React.useCallback(() => {
     const prevIndex = Math.max(step - 1, 0);
     setStep(prevIndex);
     onPrev?.(prevIndex);
-  }, [step, setStep]);
+  }, [step, setStep, onPrev]);
 
   const currentStep = steps[step];
   return (

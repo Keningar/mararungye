@@ -9,7 +9,7 @@ const trans = nodemailer.createTransport({
   },
 });
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
+export default function email(req: NextApiRequest, res: NextApiResponse) {
   trans.sendMail(
     {
       from: "kenencalada@gmail.com",
@@ -22,4 +22,4 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     }
   );
   res.status(200).json({ mess: "ok" });
-};
+}

@@ -38,7 +38,10 @@ const mockInsData: any = {
   sex: "Hombre",
 };
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async function inscription(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (req.method === "POST") {
     const insData: InsData = req.body;
 
@@ -80,4 +83,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   } else if (req.method === "GET") {
     res.status(200).json({ status: "ok" });
   }
-};
+}

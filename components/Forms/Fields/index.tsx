@@ -22,7 +22,7 @@ export const TextField = ({ label, ...props }: TextFieldProps) => {
     <>
       <label>{label}</label>
       <InputUnstyled {...field} {...(props as any)} />
-      {meta.touched && meta.error && <div className="error">{meta.error}</div>}
+      {meta.touched && meta.error && <div className='error'>{meta.error}</div>}
     </>
   );
 };
@@ -32,7 +32,7 @@ type SelectFieldProps = FieldProps & SelectUnstyledOwnProps<{}>;
 export const SelectField = React.forwardRef<
   HTMLButtonElement,
   React.PropsWithChildren<SelectFieldProps>
->(({ label, children, ...props }, ref) => {
+>(function SelectField({ label, children, ...props }, ref) {
   const [field, meta] = useField(props);
 
   console.log(field);
@@ -44,14 +44,14 @@ export const SelectField = React.forwardRef<
         ref={ref}
         componentsProps={{ root: { className: "h-6" } }}
       >
-        <OptionUnstyled value="1">1</OptionUnstyled>
-        <OptionUnstyled value="2">2</OptionUnstyled>
-        <OptionUnstyled value="3">3</OptionUnstyled>
+        <OptionUnstyled value='1'>1</OptionUnstyled>
+        <OptionUnstyled value='2'>2</OptionUnstyled>
+        <OptionUnstyled value='3'>3</OptionUnstyled>
       </SelectUnstyled>
       <SelectUnstyled {...field} {...(props as any)}>
         {children}
       </SelectUnstyled>
-      {meta.touched && meta.error && <div className="error">{meta.error}</div>}
+      {meta.touched && meta.error && <div className='error'>{meta.error}</div>}
     </>
   );
 });
