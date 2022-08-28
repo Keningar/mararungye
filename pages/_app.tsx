@@ -23,6 +23,9 @@ function MyApp({ Component, pageProps, router }: AppLayoutProps) {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  React.useEffect(() => {
+    require('tw-elements')
+  }, []);
 
   return getLayout(
     <AnimatePresence exitBeforeEnter>

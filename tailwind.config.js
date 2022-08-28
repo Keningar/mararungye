@@ -4,6 +4,7 @@ module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/tw-elements/dist/js/**/*.js",
   ],
   variants: {},
   theme: {
@@ -14,5 +15,13 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("tw-elements/dist/plugin"),
+    require("daisyui"),
+  ],
+  daisyui: {
+    prefix: "dai-",
+    themes: ["light", "dark"],
+  },
 };
