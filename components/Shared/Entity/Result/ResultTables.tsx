@@ -2,7 +2,7 @@ import React from "react";
 import { Table, TableCell } from "@/components/core/Table";
 import { createColumnHelper } from "@tanstack/react-table";
 
-import resultados_db from "@/db/resultados.json";
+import resultados_db from "@/DB/resultados.json";
 
 type Results = typeof resultados_db[number];
 type ResultData = Results["men"][number];
