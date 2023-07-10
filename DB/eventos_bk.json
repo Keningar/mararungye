@@ -1,0 +1,66 @@
+[
+  {
+    "img": {
+      "card": "/eventos/e1/card.jpg",
+      "cover": "/eventos/e1/cover.jpeg"
+    },
+    "name": "Locos x El Running 5k",
+    "id": "locos_x_el_running_5k",
+    "fecha": {
+      "dia": 21,
+      "mes": "agosto",
+      "año": 2022,
+      "hora": "6:50 AM"
+    },
+    "lugar": {
+      "ciudad": "guayaquil",
+      "direccion": "parque forestal"
+    },
+    "precios": {
+      "niños": 10,
+      "adultos": 15
+    },
+    "info": "1.5K - 5K",
+    "distancia": ["1.5k", "5k"],
+    "premio": 50,
+    "descripcion": [
+      "Competencia atlética Locos por el running 5k se dará acabo en el parque Forestal en las calles Av. Quito y El Oro grandes premios y sorteos."
+    ],
+    "abierto": false
+  },
+  {
+    "img": {
+      "card": "/eventos/e2/card.jpeg",
+      "cover": "/eventos/e2/card.jpeg"
+    },
+    "name": "5k el colorado",
+    "id": "5k_el_colorado",
+    "fecha": {
+      "dia": 3,
+      "mes": "septiembre",
+      "año": 2023,
+      "hora": ""
+    },
+    "lugar": {
+      "ciudad": "guayaquil",
+      "direccion": ""
+    },
+    "precios": {
+      "niños": 10,
+      "adultos": 15
+    },
+    "info": "",
+    "distancia": ["5k"],
+    "premio": "",
+    "abierto": true,
+    "descripcion": [
+      "Categorias:",
+      "13 a 18",
+      "19 a 29",
+      "30 a 39",
+      "40 a 49",
+      "50 a 59",
+      "60 en adelante"
+    ]
+  }
+]
