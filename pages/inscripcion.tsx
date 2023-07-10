@@ -188,7 +188,6 @@ const Inscripcion: NextPage = () => {
 
   return (
     <div className="min-h-screen lg:bg-stone-100">
-      <ModalMessage />
 
       <ArrowCircleLeftIconOutline
         className="fixed top-6 left-6 z-10 w-8 h-8 cursor-pointer"
