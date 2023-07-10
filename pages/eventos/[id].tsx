@@ -1,10 +1,10 @@
-import type { NextPage } from "next";
-import React from "react";
-import { useRouter } from "next/router";
-import Image from "next/image";
-import { motion, useViewportScroll, useTransform } from "framer-motion";
-import Link from "next/link";
-import clsx from "clsx";
+import type { NextPage } from 'next';
+import React from 'react';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
+import { motion, useViewportScroll, useTransform } from 'framer-motion';
+import Link from 'next/link';
+import clsx from 'clsx';
 
 import {
   ClockIcon,
@@ -12,19 +12,19 @@ import {
   CurrencyDollarIcon,
   InformationCircleIcon,
   ArrowCircleLeftIcon as ArrowCircleLeftIconOutline,
-} from "@heroicons/react/outline";
-import { ArrowCircleLeftIcon as ArrowCircleLeftIconSolid } from "@heroicons/react/solid";
+} from '@heroicons/react/outline';
+import { ArrowCircleLeftIcon as ArrowCircleLeftIconSolid } from '@heroicons/react/solid';
 
-import Footer from "@/components/Footer";
-import useOnScrollPosition from "@/utils/useOnScrollPosition";
-import { useIsLarge } from "@/utils/useMediaQuery";
-import StringUtils from "@/utils/StringUtils";
+import Footer from '@/components/Footer';
+import useOnScrollPosition from '@/utils/useOnScrollPosition';
+import { useIsLarge } from '@/utils/useMediaQuery';
+import StringUtils from '@/utils/StringUtils';
 
-import { EventsStore } from "@/stores/eventsStore";
-import DB_Eventos from "@/DB/eventos.json";
+import { EventsStore } from '@/stores/eventsStore';
+import DB_Eventos from '@/DB/eventos.json';
 
 const arrowProps = {
-  className: "w-8 h-8",
+  className: 'w-8 h-8',
 };
 
 const Evento: NextPage = () => {
@@ -37,7 +37,7 @@ const Evento: NextPage = () => {
   const isLarge = useIsLarge();
   const reachPosition = useOnScrollPosition(316, isLarge, false);
 
-  const [evento, setEvento] = React.useState<typeof DB_Eventos[0]>();
+  const [evento, setEvento] = React.useState<(typeof DB_Eventos)[0]>();
 
   const changeSelectedEvent = EventsStore.useChangeSelectedEvent();
 
@@ -49,7 +49,7 @@ const Evento: NextPage = () => {
     ? []
     : [
         {
-          name: "Fecha",
+          name: 'Fecha',
           icon: (
             <ClockIcon className='flex-shrink-0 w-6 h-6' aria-hidden='true' />
           ),
@@ -60,7 +60,7 @@ const Evento: NextPage = () => {
           }`,
         },
         {
-          name: "Lugar",
+          name: 'Lugar',
           icon: (
             <LocationMarkerIcon
               className='flex-shrink-0 w-6 h-6'
@@ -72,7 +72,7 @@ const Evento: NextPage = () => {
             .getWord()}, ${evento.lugar.direccion}`,
         },
         {
-          name: "Precio",
+          name: 'Precio',
           icon: (
             <CurrencyDollarIcon
               className='flex-shrink-0 w-6 h-6'
@@ -85,7 +85,7 @@ const Evento: NextPage = () => {
 
   if (evento?.info)
     detailIcons.push({
-      name: "Distancia",
+      name: 'Distancia',
       icon: (
         <InformationCircleIcon
           className='flex-shrink-0 w-6 h-6'
@@ -98,8 +98,8 @@ const Evento: NextPage = () => {
   return (
     <div
       className={clsx(
-        "min-h-screen",
-        evento ? "lg:bg-stone-50" : "bg-stone-100"
+        'min-h-screen',
+        evento ? 'lg:bg-stone-50' : 'bg-stone-100'
       )}
     >
       <motion.div className='fixed top-6 left-6 z-10'>
@@ -115,7 +115,7 @@ const Evento: NextPage = () => {
       </motion.div>
 
       {/* Fix white space on top */}
-      <div className={evento && "h-0 lg:h-1"} />
+      <div className={evento && 'h-0 lg:h-1'} />
 
       {!evento ? (
         <div className='h-screen flex flex-col'>
@@ -135,15 +135,17 @@ const Evento: NextPage = () => {
               layoutId={`id-${evento.id}`}
               className='fixed w-full h-96 lg:relative'
             >
-              <Image
-                src={evento.img.cover}
-                layout='fill'
-                objectFit='cover'
-                draggable={false}
-                quality={1}
-                priority
-                alt={`Imagen de fondo del evento ${evento.name}`}
-              />
+              {evento.img.cover ? (
+                <Image
+                  src={evento.img.cover}
+                  layout='fill'
+                  objectFit='cover'
+                  draggable={false}
+                  quality={1}
+                  priority
+                  alt={`Imagen de fondo del evento ${evento.name}`}
+                />
+              ) : null}
             </motion.div>
 
             <div className='bg-white relative py-6 px-10 -top-5 mt-96 rounded-t-3xl lg:rounded-none lg:top-0 lg:mt-0'>
@@ -167,8 +169,8 @@ const Evento: NextPage = () => {
                         </dt>
                         <dd
                           className={clsx(
-                            "flex text-base flex-col items-center w-1/3 space-y-1 text-center lg:w-fit lg:flex-row lg:space-y-0",
-                            i != arr.length - 1 && !isLarge && "border-r-2"
+                            'flex text-base flex-col items-center w-1/3 space-y-1 text-center lg:w-fit lg:flex-row lg:space-y-0',
+                            i != arr.length - 1 && !isLarge && 'border-r-2'
                           )}
                         >
                           {_.icon}
@@ -182,14 +184,14 @@ const Evento: NextPage = () => {
                   <button
                     onClick={_ => {
                       changeSelectedEvent(evento.id);
-                      routerPush("/inscripcion");
+                      routerPush('/inscripcion');
                     }}
                     disabled={!evento.abierto}
                     className={clsx(
-                      "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white md:py-4 md:text-lg md:px-10",
+                      'w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white md:py-4 md:text-lg md:px-10',
                       evento.abierto
-                        ? "bg-indigo-600 hover:bg-indigo-700"
-                        : "bg-gray-600"
+                        ? 'bg-indigo-600 hover:bg-indigo-700'
+                        : 'bg-gray-600'
                     )}
                   >
                     Inscribirse
