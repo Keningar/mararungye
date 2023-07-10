@@ -206,7 +206,10 @@ const Evento: NextPage = () => {
                 </h2>
                 <div>
                   {evento.descripcion.map((_, i) => (
-                    <p key={`des-part-${i}`}>{_}</p>
+                    <span
+                      key={`des-part-${i}`}
+                      dangerouslySetInnerHTML={{ __html: _ }}
+                    ></span>
                   ))}
                 </div>
               </div>
