@@ -9,7 +9,7 @@ import getEmailHtml from "@/libs/getEmailHtml";
 // kenencalada@gmail.com - yoxvrfdwaipfckao
 
 const isDevelop = process.env.NODE_ENV == "development";
-const correoDomain = "kenencalada@gmail.com"
+const correoDomain = "tech@mararungye.com"
 const correo = "kenencalada@gmail.com"
 /*
 const correoDomain = isDevelop
