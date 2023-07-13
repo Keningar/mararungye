@@ -9,10 +9,15 @@ import getEmailHtml from "@/libs/getEmailHtml";
 // kenencalada@gmail.com - yoxvrfdwaipfckao
 
 const isDevelop = process.env.NODE_ENV == "development";
+const correoDomain = "kenencalada@gmail.com"
+const correo = "kenencalada@gmail.com"
+/*
 const correoDomain = isDevelop
   ? "kenencalada@gmail.com"
   : "tech@mararungye.com";
 const correo = isDevelop ? "kenencalada@gmail.com" : "carmu.1292@gmail.com";
+*/
+
 const trans = nodemailer.createTransport({
   service: "gmail",
   auth: {
