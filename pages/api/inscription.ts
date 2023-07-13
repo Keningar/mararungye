@@ -22,7 +22,8 @@ const trans = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: correo,
-    pass: isDevelop ? "yoxvrfdwaipfckao" : "ygpdvvgievgffzmk",
+    //pass: isDevelop ? "yoxvrfdwaipfckao" : "ygpdvvgievgffzmk",
+    pass: "yoxvrfdwaipfckao",
   },
 });
 
@@ -49,6 +50,8 @@ export default async function inscription(
 ) {
   if (req.method === "POST") {
     const insData: InsData = req.body;
+
+    console.log(insData)
 
     trans.sendMail(
       {
