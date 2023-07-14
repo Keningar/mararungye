@@ -5,25 +5,20 @@ import type { InsData } from "@/libs/types/inscriptionData";
 import getDataHtml from "@/libs/getDataHtml";
 import getEmailHtml from "@/libs/getEmailHtml";
 
-// mararungye@gmail.com - 0969866519 - ygpdvvgievgffzmk
+// carmu.1292@gmail.com - 093054sultanamore - dmjdukanhcagmhif
 // kenencalada@gmail.com - yoxvrfdwaipfckao
 
 const isDevelop = process.env.NODE_ENV == "development";
-const correoDomain = "tech@mararungye.com"
-const correo = "kenencalada@gmail.com"
-/*
 const correoDomain = isDevelop
   ? "kenencalada@gmail.com"
   : "tech@mararungye.com";
 const correo = isDevelop ? "kenencalada@gmail.com" : "carmu.1292@gmail.com";
-*/
 
 const trans = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: correo,
-    //pass: isDevelop ? "yoxvrfdwaipfckao" : "ygpdvvgievgffzmk",
-    pass: "yoxvrfdwaipfckao",
+    pass: isDevelop ? "yoxvrfdwaipfckao" : "dmjdukanhcagmhif",
   },
 });
 
