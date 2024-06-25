@@ -5,39 +5,16 @@ import type { InsData } from "@/libs/types/inscriptionData";
 import getDataHtml from "@/libs/getDataHtml";
 import getEmailHtml from "@/libs/getEmailHtml";
 
-// carmu.1292@gmail.com - 093054sultanamore - dmjdukanhcagmhif
-// kenencalada@gmail.com - yoxvrfdwaipfckao
-
-const isDevelop = process.env.NODE_ENV == "development";
-const correoDomain = isDevelop
-  ? "kenencalada@gmail.com"
-  : "tech@mararungye.com";
-const correo = isDevelop ? "kenencalada@gmail.com" : "carmu.1292@gmail.com";
+const correoDomain = process.env.GMAIL_USER_SENDER;
+const correo = process.env.GMAIL_USER;
 
 const trans = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: correo,
-    pass: isDevelop ? "yoxvrfdwaipfckao" : "dmjdukanhcagmhif",
+    pass: process.env.GMAIL_PASS,
   },
 });
-
-const mockInsData: any = {
-  address: "villa bonita mz 5049",
-  age: "22",
-  ci: "12345",
-  birthday: new Date(),
-  city: "guayaquil",
-  country: "ecuador",
-  email: "kenth.principal.cloud@gmail.com",
-  event: "Locos x ",
-  firstName: "kenth",
-  secondName: "enrique",
-  lastName: "encalada",
-  secondLastName: "sdsdsd",
-  phone: "0909090909",
-  sex: "Hombre",
-};
 
 export default async function inscription(
   req: NextApiRequest,
