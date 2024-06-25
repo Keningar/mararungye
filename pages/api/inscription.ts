@@ -46,7 +46,7 @@ export default async function inscription(
   if (req.method === "POST") {
     const insData: InsData = req.body;
 
-    console.log(insData)
+    console.info(insData)
 
     trans.sendMail(
       {
@@ -57,6 +57,7 @@ export default async function inscription(
       },
       (err1, info1) => {
         if (err1) {
+          console.error("Error al enviar el mensaje al participante: " + err1)
           res.status(200).json({ err: true });
         } else {
           trans.sendMail(
@@ -68,6 +69,7 @@ export default async function inscription(
             },
             (err2, info2) => {
               if (err2) {
+                console.error("Error al enviar el mensaje a administración : " + err2)
                 res.status(200).json({ err: true });
               } else {
                 res.status(200).json({
