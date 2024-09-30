@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.evento-des h2 {
+  font-weight: bold;
+}
+
+.evento-des ul {
+  list-style-type: circle;
+}

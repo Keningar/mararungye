@@ -244,8 +244,8 @@ export default function getEmailHtml(data: InsData) {
                                               "
                                             >
                                               ${
-                                                data.grupo == ''
-                                                  ? 'Ninguno'
+                                                data.grupo == ""
+                                                  ? "Ninguno"
                                                   : data.grupo
                                               }
                                             </p>
@@ -380,7 +380,7 @@ export default function getEmailHtml(data: InsData) {
                                                 >
                                                   ${format(
                                                     new Date(data.birthday),
-                                                    'dd/MM/yyyy'
+                                                    "dd/MM/yyyy"
                                                   )}
                                                 </p>
 
@@ -516,6 +516,52 @@ export default function getEmailHtml(data: InsData) {
                           >
                             ${data.talla}
                           </p>
+                          <div style="height: 16px"></div>
+                                                  <h4 style="
+                                                    box-sizing: border-box;
+                                                    border-width: 0;
+                                                    border-style: solid;
+                                                    border-color: #e5e7eb;
+                                                    font-weight: 600;
+                                                    margin: 0;
+                                                  ">
+                                                  Ha participado en 60k Ultramaratón del Guayas:
+                                                  </h4>
+                                                  <p style="
+                                                    box-sizing: border-box;
+                                                    border-width: 0;
+                                                    border-style: solid;
+                                                    border-color: #e5e7eb;
+                                                    margin: 0;
+                                                  ">
+                                                    ${data.a_participado}
+                                                  </p>
+                                                  ${
+                                                    data.recomendedBy
+                                                      ? `
+                                                    <div style="height: 16px"></div>
+                                                  <h4 style="
+                                                    box-sizing: border-box;
+                                                    border-width: 0;
+                                                    border-style: solid;
+                                                    border-color: #e5e7eb;
+                                                    font-weight: 600;
+                                                    margin: 0;
+                                                  ">
+                                                  Fue recomendado por:
+                                                  </h4>
+                                                  <p style="
+                                                    box-sizing: border-box;
+                                                    border-width: 0;
+                                                    border-style: solid;
+                                                    border-color: #e5e7eb;
+                                                    margin: 0;
+                                                  ">
+                                                    ${data.recomendedBy}
+                                                  </p>
+                                                    `
+                                                      : ""
+                                                  }
                                                 </td>
                                               </tr>
                                             </tbody>

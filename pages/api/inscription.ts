@@ -4,6 +4,7 @@ import nodemailer from "nodemailer";
 import type { InsData } from "@/libs/types/inscriptionData";
 import getDataHtml from "@/libs/getDataHtml";
 import getEmailHtml from "@/libs/getEmailHtml";
+import Mail from "nodemailer/lib/mailer";
 
 const correoDomain = process.env.GMAIL_USER_SENDER;
 const correo = process.env.GMAIL_USER;
@@ -23,7 +24,19 @@ export default async function inscription(
   if (req.method === "POST") {
     const insData: InsData = req.body;
 
-    console.info(insData)
+    const imageAttachment: Mail.Attachment | null = insData.foto
+      ? {
+          filename: "evidencia",
+          content: insData.foto.split(",")[1],
+          encoding: "base64",
+          contentType: insData.foto.substring(
+            insData.foto.indexOf(":") + 1,
+            insData.foto.indexOf(";")
+          ),
+        }
+      : null;
+
+    console.info(insData);
 
     trans.sendMail(
       {
@@ -34,7 +47,7 @@ export default async function inscription(
       },
       (err1, info1) => {
         if (err1) {
-          console.error("Error al enviar el mensaje al participante: " + err1)
+          console.error("Error al enviar el mensaje al participante: " + err1);
           res.status(200).json({ err: true });
         } else {
           trans.sendMail(
@@ -43,10 +56,13 @@ export default async function inscription(
               to: correo,
               subject: `Detalles de inscripción`,
               html: getDataHtml(insData),
+              attachments: imageAttachment ? [imageAttachment] : [],
             },
             (err2, info2) => {
               if (err2) {
-                console.error("Error al enviar el mensaje a administración : " + err2)
+                console.error(
+                  "Error al enviar el mensaje a administración : " + err2
+                );
                 res.status(200).json({ err: true });
               } else {
                 res.status(200).json({

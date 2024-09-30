@@ -713,7 +713,7 @@ export default function getEmailHtml(data: InsData) {
                               color: rgb(156 163 175 / 1);
                             "
                           >
-                            &copy; 2022 Mararungye. Todos los derechos
+                            &copy; 2024 Mararungye. Todos los derechos
                             reservados.
                           </p>
                         </td>

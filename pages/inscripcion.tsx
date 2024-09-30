@@ -45,6 +45,9 @@ import { IoShirtOutline } from "react-icons/io5";
 import { CgFileDocument } from "react-icons/cg";
 import { TbCalendarEvent } from "react-icons/tb";
 import { ArrowCircleLeftIcon as ArrowCircleLeftIconOutline } from "@heroicons/react/outline";
+import AParticipado, {
+  isValidAParticipado,
+} from "@/components/inscripcion/60kOk";
 
 interface InscriptionData {
   step0: step0Data;
@@ -65,10 +68,10 @@ const steps: {
   check: (val: any) => boolean;
 }[] = [
   {
-    name: "Evento",
+    name: "Particiones anteriores",
     icon: TbCalendarEvent,
-    form: Step0,
-    check: step0CheckInputs,
+    form: AParticipado,
+    check: isValidAParticipado,
   },
   {
     name: "Información Personal",
@@ -156,12 +159,13 @@ const Inscripcion: NextPage = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          event: DB_Eventos.find((_) => _.id == selectedEvent)?.name,
           ...inscriptionData[getStepName(0)],
           ...inscriptionData[getStepName(1)],
           ...inscriptionData[getStepName(2)],
           ...inscriptionData[getStepName(3)],
           ...inscriptionData[getStepName(4)],
+          event: "60K Ultramaratón del Guayas",
+          distancia: "60k",
         }),
       });
       const resJson = await res.json();
@@ -188,7 +192,6 @@ const Inscripcion: NextPage = () => {
 
   return (
     <div className="min-h-screen lg:bg-stone-100">
-
       <ArrowCircleLeftIconOutline
         className="fixed top-6 left-6 z-10 w-8 h-8 cursor-pointer"
         onClick={goBack}

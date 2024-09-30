@@ -11,6 +11,7 @@ interface InsCommon {
   label: string;
   className?: InClases;
   requiered?: boolean;
+  show?: boolean;
 }
 interface InsInputProps extends InsCommon {
   name: string;
@@ -56,7 +57,7 @@ export default function Container({
           classes?.container
         )}
       >
-        {inputs.map(_ =>
+        {inputs.filter(_ => typeof _.show == 'undefined' || _.show).map(_ =>
           isAnElement(_) ? (
             <div key={_.label} className={_.className?.element}>
               <label
