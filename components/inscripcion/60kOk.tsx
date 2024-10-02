@@ -88,7 +88,7 @@ export default function AParticipado({
       areInputsValid={areValid}
       inputs={[
         {
-          label: "Has participado en 60k Ultramaratón del Guayas",
+          label: "Registro de competencia maratón 42k año 2023-2024",
           element: (
             <Listbox
               value={a_participado}

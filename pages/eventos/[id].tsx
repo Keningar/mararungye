@@ -16,7 +16,6 @@ import {
 import { ArrowCircleLeftIcon as ArrowCircleLeftIconSolid } from "@heroicons/react/solid";
 
 import Footer from "@/components/Footer";
-import useOnScrollPosition from "@/utils/useOnScrollPosition";
 import { useIsLarge } from "@/utils/useMediaQuery";
 import StringUtils from "@/utils/StringUtils";
 
@@ -35,7 +34,6 @@ const Evento: NextPage = () => {
   const { scrollYProgress } = useViewportScroll();
   const final_des_y = useTransform(scrollYProgress, [0, 1], [0, -150]);
   const isLarge = useIsLarge();
-  const reachPosition = useOnScrollPosition(316, isLarge, false);
 
   const [evento, setEvento] = React.useState<(typeof DB_Eventos)[0]>();
 
@@ -105,7 +103,7 @@ const Evento: NextPage = () => {
       <motion.div className="fixed top-6 left-6 z-10">
         <Link href="/eventos">
           <a>
-            {reachPosition && !isLarge ? (
+            {!isLarge ? (
               <ArrowCircleLeftIconSolid {...arrowProps} />
             ) : (
               <ArrowCircleLeftIconOutline {...arrowProps} />
@@ -158,24 +156,22 @@ const Evento: NextPage = () => {
               {/* Sub info */}
               <div className="flex justify-between items-center">
                 <dl className="my-6 space-y-2 w-full flex justify-between lg:block lg:w-fit">
-                  {detailIcons.map((_, i, arr) =>
-                    i == 2 && !isLarge ? null : (
-                      <React.Fragment key={_.name}>
-                        <dt>
-                          <span className="sr-only">{_.name}</span>
-                        </dt>
-                        <dd
-                          className={clsx(
-                            "flex text-base flex-col items-center w-1/3 space-y-1 text-center lg:w-fit lg:flex-row lg:space-y-0",
-                            i != arr.length - 1 && !isLarge && "border-r-2"
-                          )}
-                        >
-                          {_.icon}
-                          <span className="lg:ml-3">{_.value}</span>
-                        </dd>
-                      </React.Fragment>
-                    )
-                  )}
+                  {detailIcons.map((_, i, arr) => (
+                    <React.Fragment key={_.name}>
+                      <dt>
+                        <span className="sr-only">{_.name}</span>
+                      </dt>
+                      <dd
+                        className={clsx(
+                          "flex text-base flex-col items-center w-1/3 space-y-1 text-center lg:w-fit lg:flex-row lg:space-y-0",
+                          i != arr.length - 1 && !isLarge && "border-r-2"
+                        )}
+                      >
+                        {_.icon}
+                        <span className="lg:ml-3">{_.value}</span>
+                      </dd>
+                    </React.Fragment>
+                  ))}
                 </dl>
                 <div className="w-3/4 rounded-md shadow fixed left-1/2 bottom-6 -translate-x-1/2 lg:w-40 lg:relative lg:left-auto lg:bottom-auto lg:translate-x-0">
                   <button
