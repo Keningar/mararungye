@@ -69,7 +69,7 @@ const Evento: NextPage = () => {
             .capitalize()
             .getWord()}, ${evento.lugar.direccion}`,
         },
-        {
+        /* {
           name: "Precio",
           icon: (
             <CurrencyDollarIcon
@@ -78,7 +78,7 @@ const Evento: NextPage = () => {
             />
           ),
           value: evento.precios.map((cat) => `$${cat.precio} ${cat.category}`),
-        },
+        }, */
       ];
 
   if (evento?.info)

@@ -88,7 +88,7 @@ export default function AParticipado({
       areInputsValid={areValid}
       inputs={[
         {
-          label: "Registro de competencia maratón 42k año 2023-2024",
+          label: "Has participado en 60k Ultramaratón del Guayas",
           element: (
             <Listbox
               value={a_participado}
@@ -163,7 +163,7 @@ export default function AParticipado({
           ),
         },
         {
-          label: "Foto de ultimo entrenamiento (minimo 42 km)",
+          label: "Registro de competencia maratón 42k año 2023-2024",
           show: a_participado == "No",
           element: (
             <input type="file" onChange={handleFileChange} accept="image/*" />
