@@ -99,6 +99,7 @@ const Eventos: NextPage = () => {
                         src={_.img.cover}
                         layout='fill'
                         objectFit='cover'
+                        objectPosition="top"
                         draggable={false}
                         alt={`Imagen del evento ${_.name}`}
                       />

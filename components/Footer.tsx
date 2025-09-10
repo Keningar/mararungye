@@ -12,6 +12,8 @@ interface footerProps {
 }
 
 export default function Footer({ className, clases }: footerProps) {
+  const curr_year = new Date().getFullYear();
+
   return (
     <footer className={className}>
       <div className='max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8'>
@@ -42,7 +44,7 @@ export default function Footer({ className, clases }: footerProps) {
               clases?.legent
             )}
           >
-            &copy; 2022 Mararungye. Todos los derechos reservados.
+            &copy; {curr_year} Mararungye. Todos los derechos reservados.
           </p>
         </div>
       </div>

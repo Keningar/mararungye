@@ -4,8 +4,8 @@ import cuentasDB from "@/DB/cuentas.json";
 // import StringUtils from "@/utils/StringUtils";
 
 export default function getEmailHtml(data: InsData) {
+  const curr_year = new Date().getFullYear();
   const Name = `${data.firstName} ${data.secondName} ${data.lastName} ${data.secondLastName}`;
-
   const Address = `${data.country} - ${data.city}, ${data.address}`;
 
   return `
@@ -713,7 +713,7 @@ export default function getEmailHtml(data: InsData) {
                               color: rgb(156 163 175 / 1);
                             "
                           >
-                            &copy; 2024 Mararungye. Todos los derechos
+                            &copy; ${curr_year} Mararungye. Todos los derechos
                             reservados.
                           </p>
                         </td>

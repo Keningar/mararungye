@@ -138,6 +138,7 @@ const Evento: NextPage = () => {
                   src={evento.img.cover}
                   layout="fill"
                   objectFit="cover"
+                  objectPosition="50% 15%"
                   draggable={false}
                   quality={1}
                   priority
