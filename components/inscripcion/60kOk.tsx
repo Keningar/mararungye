@@ -163,7 +163,7 @@ export default function AParticipado({
           ),
         },
         {
-          label: "Registro de competencia maratón 42k año 2023-2024",
+          label: "Registro de competencia maratón 42k año 2024-2025",
           show: a_participado == "No",
           element: (
             <input type="file" onChange={handleFileChange} accept="image/*" />
