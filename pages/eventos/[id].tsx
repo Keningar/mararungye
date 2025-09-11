@@ -102,13 +102,11 @@ const Evento: NextPage = () => {
     >
       <motion.div className="fixed top-6 left-6 z-10">
         <Link href="/eventos">
-          <a>
-            {!isLarge ? (
-              <ArrowCircleLeftIconSolid {...arrowProps} />
-            ) : (
-              <ArrowCircleLeftIconOutline {...arrowProps} />
-            )}
-          </a>
+          {!isLarge ? (
+            <ArrowCircleLeftIconSolid {...arrowProps} />
+          ) : (
+            <ArrowCircleLeftIconOutline {...arrowProps} />
+          )}
         </Link>
       </motion.div>
 
@@ -136,12 +134,14 @@ const Evento: NextPage = () => {
               {evento.img.cover ? (
                 <Image
                   src={evento.img.cover}
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="50% 15%"
-                  draggable={false}
-                  quality={1}
+                  fill
                   priority
+                  draggable={false}
+                  style={{
+                    objectFit: "cover",
+                    objectPosition: "50% 15%",
+                  }}
+                  sizes="100vw"
                   alt={`Imagen de fondo del evento ${evento.name}`}
                 />
               ) : null}

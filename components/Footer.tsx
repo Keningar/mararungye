@@ -24,16 +24,13 @@ export default function Footer({ className, clases }: footerProps) {
               href={item.href}
               target='_blank'
               rel='noreferrer'
+              className={clsx(
+                'text-gray-600 hover:text-gray-800',
+                clases?.icons
+              )}
             >
-              <a
-                className={clsx(
-                  'text-gray-600 hover:text-gray-800',
-                  clases?.icons
-                )}
-              >
-                <span className='sr-only'>{item.name}</span>
-                <item.icon className='h-6 w-6' aria-hidden='true' />
-              </a>
+              <span className='sr-only'>{item.name}</span>
+              <item.icon className='h-6 w-6' aria-hidden='true' />
             </Link>
           ))}
         </div>
