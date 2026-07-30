@@ -1,15 +1,15 @@
 [
   {
     "img": {
-      "card": "/eventos/e4/card.jpg",
-      "cover": "/eventos/e4/card.jpg"
+      "card": "/eventos/e5/card.jpeg",
+      "cover": "/eventos/e5/card.jpeg"
     },
     "name": "60K Ultramaratón del Guayas",
     "id": "60k_ultramaratón_del_guayas",
     "fecha": {
-      "dia": 23,
+      "dia": 22,
       "mes": "Noviembre",
-      "año": 2025,
+      "año": 2026,
       "hora": "3:00 AM"
     },
     "lugar": {
@@ -28,7 +28,7 @@
     ],
     "premio": 50,
     "descripcion": [
-      "<h2>Hombres y Mujeres</h2><ul><li>General</li><li>Caciques</li><li>Legendarios</li></ul><h2>Categoria por edad</h2><ul><li>Monos Guayacos: 20-49 años</li><li>Huancavilcas: 50 años en adelante</li></ul>"
+      "Preventa a $30 desde el 10 de agosto al 10 de octubre<br/><br/><h2>Hombres y Mujeres</h2><ul><li>Caciques</li><li>Legendarios</li></ul><h2>Categoria por edad</h2><ul><li>Monos Guayacos: 20-49 años</li><li>Huancavilcas: 50 años en adelante</li></ul>"
     ],
     "abierto": true
   }
