@@ -3,7 +3,9 @@ import Link from 'next/link';
 
 import CuentasDB from '@/DB/cuentas.json';
 
-import { AiOutlineBank } from 'react-icons/ai';
+import { AiOutlineBank as _AiOutlineBank } from 'react-icons/ai';
+// React 19 strict JSX types
+const AiOutlineBank: any = _AiOutlineBank;
 
 interface FinalStepProps {
   value?: string;

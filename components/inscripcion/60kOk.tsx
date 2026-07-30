@@ -1,8 +1,14 @@
 import React from "react";
 
 import Container from "@/components/inscripcion/container";
-import { Listbox, Transition } from "@headlessui/react";
-import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
+import { Listbox as _Listbox, Transition as _Transition } from "@headlessui/react";
+// React 19 strict JSX types vs @headlessui/react v1 ref-forwarding
+const Listbox: any = _Listbox;
+const Transition: any = _Transition;
+import { CheckIcon as _CheckIcon, SelectorIcon as _SelectorIcon } from "@heroicons/react/solid";
+// React 19 strict JSX types vs @heroicons/react
+const CheckIcon: any = _CheckIcon;
+const SelectorIcon: any = _SelectorIcon;
 import clsx from "clsx";
 
 export interface aParticipadoData {
@@ -92,7 +98,7 @@ export default function AParticipado({
           element: (
             <Listbox
               value={a_participado}
-              onChange={(_) => {
+              onChange={(_: string) => {
                 a_participado = _;
                 const updatedValue = { ...newValue, a_participado: _ };
                 onChange?.(updatedValue);
@@ -126,7 +132,7 @@ export default function AParticipado({
                     {si_no_op.map((op) => (
                       <Listbox.Option
                         key={op}
-                        className={({ active }) =>
+                        className={({ active }: { active: boolean }) =>
                           `relative cursor-default select-none py-2 pl-10 pr-4 ${
                             active
                               ? "bg-indigo-100 text-indigo-900"
@@ -135,7 +141,7 @@ export default function AParticipado({
                         }
                         value={op}
                       >
-                        {({ selected }) => (
+                        {({ selected }: { selected: boolean }) => (
                           <>
                             <span
                               className={`block truncate ${

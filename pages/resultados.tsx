@@ -1,14 +1,18 @@
 import React from "react";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import { motion } from "framer-motion";
+import { motion as _motion } from "framer-motion";
+// React 19 types vs framer-motion v6
+const motion: any = _motion;
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import EventTable from "@/components/Shared/Entity/Event/EventTable";
 import ResultTables from "@/components/Shared/Entity/Result/ResultTables";
 
-import { BiArrowBack } from "react-icons/bi";
+import { BiArrowBack as _BiArrowBack } from "react-icons/bi";
+// React 19 strict JSX types
+const BiArrowBack: any = _BiArrowBack;
 
 const A_Header = {
   out: { left: -100, opacity: 0 },

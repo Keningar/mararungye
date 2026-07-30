@@ -1,7 +1,9 @@
 import type { NextPage } from "next";
 import React from "react";
 import { useRouter } from "next/router";
-import { motion } from "framer-motion";
+import { motion as _motion } from "framer-motion";
+// React 19 types vs framer-motion v6
+const motion: any = _motion;
 import clsx from "clsx";
 import ModalMessage from "@/components/ModalMessage";
 
@@ -33,18 +35,27 @@ import Terminos from "@/components/inscripcion/terminos";
 import FinalStep from "@/components/inscripcion/finalStep";
 
 // ICONS
-import { IconType } from "react-icons";
 import {
-  AiOutlineUser,
-  AiOutlinePhone,
-  AiOutlineCheck,
-  AiOutlineClose,
+  AiOutlineUser as _AiOutlineUser,
+  AiOutlinePhone as _AiOutlinePhone,
+  AiOutlineCheck as _AiOutlineCheck,
+  AiOutlineClose as _AiOutlineClose,
 } from "react-icons/ai";
-import { GoLocation } from "react-icons/go";
-import { IoShirtOutline } from "react-icons/io5";
-import { CgFileDocument } from "react-icons/cg";
-import { TbCalendarEvent } from "react-icons/tb";
-import { ArrowCircleLeftIcon as ArrowCircleLeftIconOutline } from "@heroicons/react/outline";
+import { GoLocation as _GoLocation } from "react-icons/go";
+import { IoShirtOutline as _IoShirtOutline } from "react-icons/io5";
+import { CgFileDocument as _CgFileDocument } from "react-icons/cg";
+import { TbCalendarEvent as _TbCalendarEvent } from "react-icons/tb";
+import { ArrowCircleLeftIcon as _ArrowCircleLeftIconOutline } from "@heroicons/react/outline";
+// React 19 strict JSX types
+const AiOutlineUser: any = _AiOutlineUser;
+const AiOutlinePhone: any = _AiOutlinePhone;
+const AiOutlineCheck: any = _AiOutlineCheck;
+const AiOutlineClose: any = _AiOutlineClose;
+const GoLocation: any = _GoLocation;
+const IoShirtOutline: any = _IoShirtOutline;
+const CgFileDocument: any = _CgFileDocument;
+const TbCalendarEvent: any = _TbCalendarEvent;
+const ArrowCircleLeftIconOutline: any = _ArrowCircleLeftIconOutline;
 import AParticipado, {
   isValidAParticipado,
 } from "@/components/inscripcion/60kOk";
@@ -63,7 +74,7 @@ const twoColumnsStyle =
 
 const steps: {
   name: string;
-  icon: IconType;
+  icon: any;
   form: any;
   check: (val: any) => boolean;
 }[] = [

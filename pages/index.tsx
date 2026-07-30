@@ -2,7 +2,9 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion as _motion } from "framer-motion";
+// React 19 types vs framer-motion v6
+const motion: any = _motion;
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";

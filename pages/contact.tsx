@@ -1,8 +1,13 @@
 import type { NextPage } from "next";
 import React from "react";
-import { PhoneIcon } from "@heroicons/react/outline";
-import { ExternalLinkIcon } from "@heroicons/react/solid";
-import { motion, Variants } from "framer-motion";
+import { PhoneIcon as _PhoneIcon } from "@heroicons/react/outline";
+import { ExternalLinkIcon as _ExternalLinkIcon } from "@heroicons/react/solid";
+// React 19 strict JSX types
+const PhoneIcon: any = _PhoneIcon;
+const ExternalLinkIcon: any = _ExternalLinkIcon;
+// React 19 types vs framer-motion v6
+import { motion as _motion, Variants } from "framer-motion";
+const motion: any = _motion;
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";

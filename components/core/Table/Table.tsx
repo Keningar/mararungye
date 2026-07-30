@@ -54,7 +54,7 @@ export default function Table<T = {}>({
                       {flexRender(
                         header.column.columnDef.header,
                         header.getContext()
-                      )}
+                      ) as React.ReactNode}
                       {{
                         asc: " 🔼",
                         desc: " 🔽",
@@ -79,7 +79,7 @@ export default function Table<T = {}>({
                 const CellTag = fixFirstColumn && i == 0 ? "th" : "td";
                 return (
                   <CellTag key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    {flexRender(cell.column.columnDef.cell, cell.getContext()) as React.ReactNode}
                   </CellTag>
                 );
               })}
@@ -96,7 +96,7 @@ export default function Table<T = {}>({
                     : flexRender(
                         header.column.columnDef.footer,
                         header.getContext()
-                      )}
+                      ) as React.ReactNode}
                 </th>
               ))}
             </tr>

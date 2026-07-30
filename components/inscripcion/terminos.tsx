@@ -1,7 +1,9 @@
 import clsx from "clsx";
 import React from "react";
 
-import { AiOutlineReload } from "react-icons/ai";
+import { AiOutlineReload as _AiOutlineReload } from "react-icons/ai";
+// React 19 strict JSX types
+const AiOutlineReload: any = _AiOutlineReload;
 
 interface TerminosProps {
   value?: string;

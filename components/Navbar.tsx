@@ -1,8 +1,14 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Popover, Transition } from "@headlessui/react";
-import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import { Popover as _Popover, Transition as _Transition } from "@headlessui/react";
+// React 19 strict JSX types vs @headlessui/react v1 ref-forwarding
+const Popover: any = _Popover;
+const Transition: any = _Transition;
+import { MenuIcon as _MenuIcon, XIcon as _XIcon } from "@heroicons/react/outline";
+// React 19 strict JSX types
+const MenuIcon: any = _MenuIcon;
+const XIcon: any = _XIcon;
 
 const navigation = [
   // { name: "Galeria", href: "#" },

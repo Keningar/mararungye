@@ -2,18 +2,27 @@ import type { NextPage } from "next";
 import React from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { motion, useViewportScroll, useTransform } from "framer-motion";
+import { motion as _motion, useViewportScroll, useTransform } from "framer-motion";
+// React 19 types vs framer-motion v6
+const motion: any = _motion;
 import Link from "next/link";
 import clsx from "clsx";
 
 import {
-  ClockIcon,
-  LocationMarkerIcon,
-  CurrencyDollarIcon,
-  InformationCircleIcon,
-  ArrowCircleLeftIcon as ArrowCircleLeftIconOutline,
+  ClockIcon as _ClockIcon,
+  LocationMarkerIcon as _LocationMarkerIcon,
+  CurrencyDollarIcon as _CurrencyDollarIcon,
+  InformationCircleIcon as _InformationCircleIcon,
+  ArrowCircleLeftIcon as _ArrowCircleLeftIconOutline,
 } from "@heroicons/react/outline";
-import { ArrowCircleLeftIcon as ArrowCircleLeftIconSolid } from "@heroicons/react/solid";
+import { ArrowCircleLeftIcon as _ArrowCircleLeftIconSolid } from "@heroicons/react/solid";
+// React 19 strict JSX types
+const ClockIcon: any = _ClockIcon;
+const LocationMarkerIcon: any = _LocationMarkerIcon;
+const CurrencyDollarIcon: any = _CurrencyDollarIcon;
+const InformationCircleIcon: any = _InformationCircleIcon;
+const ArrowCircleLeftIconOutline: any = _ArrowCircleLeftIconOutline;
+const ArrowCircleLeftIconSolid: any = _ArrowCircleLeftIconSolid;
 
 import Footer from "@/components/Footer";
 import { useIsLarge } from "@/utils/useMediaQuery";

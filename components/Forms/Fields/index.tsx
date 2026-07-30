@@ -9,6 +9,11 @@ import SelectUnstyled, {
 import OptionUnstyled from "@mui/base/OptionUnstyled";
 export { default as SelectFieldOption } from "@mui/base/OptionUnstyled";
 
+// React 19 strict JSX types: @mui/base v5 ref-forwarding components
+const _InputUnstyled: any = InputUnstyled;
+const _SelectUnstyled: any = SelectUnstyled;
+const _OptionUnstyled: any = OptionUnstyled;
+
 type FieldProps = FieldHookConfig<any> & {
   label: string;
 };
@@ -21,7 +26,7 @@ export const TextField = ({ label, ...props }: TextFieldProps) => {
   return (
     <>
       <label>{label}</label>
-      <InputUnstyled {...field} {...(props as any)} />
+      <_InputUnstyled {...field} {...(props as any)} />
       {meta.touched && meta.error && <div className='error'>{meta.error}</div>}
     </>
   );
@@ -40,17 +45,17 @@ export const SelectField = React.forwardRef<
   return (
     <>
       <label>{label}</label>
-      <SelectUnstyled
+      <_SelectUnstyled
         ref={ref}
         componentsProps={{ root: { className: "h-6" } }}
       >
-        <OptionUnstyled value='1'>1</OptionUnstyled>
-        <OptionUnstyled value='2'>2</OptionUnstyled>
-        <OptionUnstyled value='3'>3</OptionUnstyled>
-      </SelectUnstyled>
-      <SelectUnstyled {...field} {...(props as any)}>
+        <_OptionUnstyled value='1'>1</_OptionUnstyled>
+        <_OptionUnstyled value='2'>2</_OptionUnstyled>
+        <_OptionUnstyled value='3'>3</_OptionUnstyled>
+      </_SelectUnstyled>
+      <_SelectUnstyled {...field} {...(props as any)}>
         {children}
-      </SelectUnstyled>
+      </_SelectUnstyled>
       {meta.touched && meta.error && <div className='error'>{meta.error}</div>}
     </>
   );

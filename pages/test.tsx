@@ -1,8 +1,11 @@
 import React from "react";
 import type { NextPage } from "next";
-import SelectUnstyled from "@mui/base/SelectUnstyled";
+import _SelectUnstyled from "@mui/base/SelectUnstyled";
+// React 19 strict JSX types vs @mui/base v5
+const SelectUnstyled: any = _SelectUnstyled;
 
-import OptionUnstyled from "@mui/base/OptionUnstyled";
+import _OptionUnstyled from "@mui/base/OptionUnstyled";
+const OptionUnstyled: any = _OptionUnstyled;
 
 const Test: NextPage = () => {
   return (

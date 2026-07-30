@@ -6,9 +6,13 @@ import MultiStepForm, { StepData } from "@/components/Forms/MultiStepForm";
 import { Evento } from "@/components/Forms/Inscription/Evento";
 
 // ICONS
-import { AiOutlineUser } from "react-icons/ai";
-import { TbCalendarEvent } from "react-icons/tb";
-import { ArrowCircleLeftIcon as ArrowCircleLeftIconOutline } from "@heroicons/react/outline";
+import { AiOutlineUser as _AiOutlineUser } from "react-icons/ai";
+import { TbCalendarEvent as _TbCalendarEvent } from "react-icons/tb";
+import { ArrowCircleLeftIcon as _ArrowCircleLeftIconOutline } from "@heroicons/react/outline";
+// React 19 strict JSX types
+const AiOutlineUser: any = _AiOutlineUser;
+const TbCalendarEvent: any = _TbCalendarEvent;
+const ArrowCircleLeftIconOutline: any = _ArrowCircleLeftIconOutline;
 
 const stepPages: StepData[] = [{ label: "Evento", component: <Evento /> }];
 const stepperStepData = [

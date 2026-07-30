@@ -3,8 +3,14 @@ import React from 'react';
 import Container from '@/components/inscripcion/container';
 
 import clsx from 'clsx';
-import { Listbox, Transition } from '@headlessui/react';
-import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
+import { Listbox as _Listbox, Transition as _Transition } from '@headlessui/react';
+// React 19 strict JSX types vs @headlessui/react v1 ref-forwarding
+const Listbox: any = _Listbox;
+const Transition: any = _Transition;
+import { CheckIcon as _CheckIcon, SelectorIcon as _SelectorIcon } from '@heroicons/react/solid';
+// React 19 strict JSX types vs @heroicons/react
+const CheckIcon: any = _CheckIcon;
+const SelectorIcon: any = _SelectorIcon;
 
 import DB_Eventos from '@/DB/eventos.json';
 
@@ -58,7 +64,7 @@ export default function Step0({ value, onChange, onNext }: step0Props) {
           element: (
             <Listbox
               value={event}
-              onChange={_ => {
+              onChange={(_: string) => {
                 const updatedValue = { ...newValue, event: _ };
                 setAreValid(step0CheckInputs(updatedValue));
                 onChange?.(updatedValue);
@@ -95,7 +101,7 @@ export default function Step0({ value, onChange, onNext }: step0Props) {
                     {DB_Eventos.map(event => (
                       <Listbox.Option
                         key={event.id}
-                        className={({ active }) =>
+                        className={({ active }: { active: boolean }) =>
                           `relative cursor-default select-none py-2 pl-10 pr-4 ${
                             active
                               ? 'bg-indigo-100 text-indigo-900'
@@ -104,7 +110,7 @@ export default function Step0({ value, onChange, onNext }: step0Props) {
                         }
                         value={event.id}
                       >
-                        {({ selected }) => (
+                        {({ selected }: { selected: boolean }) => (
                           <>
                             <span
                               className={`block truncate ${
@@ -136,7 +142,7 @@ export default function Step0({ value, onChange, onNext }: step0Props) {
           element: (
             <Listbox
               value={distancia}
-              onChange={_ => {
+              onChange={(_: string) => {
                 const updatedValue = { ...newValue, distancia: _ };
                 setAreValid(step0CheckInputs(updatedValue));
                 onChange?.(updatedValue);
@@ -172,7 +178,7 @@ export default function Step0({ value, onChange, onNext }: step0Props) {
                     {DB_Eventos.find(_ => _.id == event)?.distancia.map(dis => (
                       <Listbox.Option
                         key={dis}
-                        className={({ active }) =>
+                        className={({ active }: { active: boolean }) =>
                           `relative cursor-default select-none py-2 pl-10 pr-4 ${
                             active
                               ? 'bg-indigo-100 text-indigo-900'
@@ -181,7 +187,7 @@ export default function Step0({ value, onChange, onNext }: step0Props) {
                         }
                         value={dis}
                       >
-                        {({ selected }) => (
+                        {({ selected }: { selected: boolean }) => (
                           <>
                             <span
                               className={`block truncate ${

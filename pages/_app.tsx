@@ -4,7 +4,10 @@ import type { AppLayoutProps } from "next/app";
 
 import React from "react";
 import { getLayout as deafultGetLayout } from "@/components/layouts/DefaultLayout";
-import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { AnimatePresence as _AnimatePresence, AnimateSharedLayout as _AnimateSharedLayout } from "framer-motion";
+// React 19 types vs framer-motion v6
+const AnimatePresence: any = _AnimatePresence;
+const AnimateSharedLayout: any = _AnimateSharedLayout;
 
 // const deafultGetLayout = (Component: any) => Component;
 

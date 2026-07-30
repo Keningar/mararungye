@@ -3,9 +3,15 @@ import React from 'react';
 import Container from '@/components/inscripcion/container';
 
 import clsx from 'clsx';
-import { Listbox, Transition } from '@headlessui/react';
+import { Listbox as _Listbox, Transition as _Transition } from '@headlessui/react';
+// React 19 strict JSX types vs @headlessui/react v1 ref-forwarding
+const Listbox: any = _Listbox;
+const Transition: any = _Transition;
 import Datepicker from '@/components/Datepicker';
-import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
+import { CheckIcon as _CheckIcon, SelectorIcon as _SelectorIcon } from '@heroicons/react/solid';
+// React 19 strict JSX types vs @heroicons/react
+const CheckIcon: any = _CheckIcon;
+const SelectorIcon: any = _SelectorIcon;
 
 export interface step1Data {
   firstName: string;
@@ -162,7 +168,7 @@ export default function Step1({ value, onChange, onNext, onPrev }: step1Props) {
           element: (
             <Listbox
               value={sex}
-              onChange={_ => {
+              onChange={(_: string) => {
                 const updatedValue = { ...newValue, sex: _ };
                 setAreValid(step1CheckInputs(updatedValue));
                 onChange?.(updatedValue);
@@ -198,7 +204,7 @@ export default function Step1({ value, onChange, onNext, onPrev }: step1Props) {
                     {sexo_op.map(sex => (
                       <Listbox.Option
                         key={sex}
-                        className={({ active }) =>
+                        className={({ active }: { active: boolean }) =>
                           `relative cursor-default select-none py-2 pl-10 pr-4 ${
                             active
                               ? 'bg-indigo-100 text-indigo-900'
@@ -207,7 +213,7 @@ export default function Step1({ value, onChange, onNext, onPrev }: step1Props) {
                         }
                         value={sex}
                       >
-                        {({ selected }) => (
+                        {({ selected }: { selected: boolean }) => (
                           <>
                             <span
                               className={`block truncate ${
@@ -246,7 +252,7 @@ export default function Step1({ value, onChange, onNext, onPrev }: step1Props) {
           element: (
             <Listbox
               value={especial}
-              onChange={_ => {
+              onChange={(_: string) => {
                 const updatedValue = { ...newValue, especial: _ };
                 setAreValid(step1CheckInputs(updatedValue));
                 onChange?.(updatedValue);
@@ -280,7 +286,7 @@ export default function Step1({ value, onChange, onNext, onPrev }: step1Props) {
                     {si_no_op.map(op => (
                       <Listbox.Option
                         key={op}
-                        className={({ active }) =>
+                        className={({ active }: { active: boolean }) =>
                           `relative cursor-default select-none py-2 pl-10 pr-4 ${
                             active
                               ? 'bg-indigo-100 text-indigo-900'
@@ -289,7 +295,7 @@ export default function Step1({ value, onChange, onNext, onPrev }: step1Props) {
                         }
                         value={op}
                       >
-                        {({ selected }) => (
+                        {({ selected }: { selected: boolean }) => (
                           <>
                             <span
                               className={`block truncate ${

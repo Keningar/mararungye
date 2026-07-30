@@ -1,6 +1,10 @@
 import React from "react";
-import { Dialog } from "@headlessui/react";
-import { AiOutlineWarning } from "react-icons/ai";
+import { Dialog as _Dialog } from "@headlessui/react";
+// React 19 strict JSX types vs @headlessui/react v1 ref-forwarding
+const Dialog: any = _Dialog;
+import { AiOutlineWarning as _AiOutlineWarning } from "react-icons/ai";
+// React 19 strict JSX types
+const AiOutlineWarning: any = _AiOutlineWarning;
 
 export default function ModalMessage() {
   let [isOpen, setIsOpen] = React.useState(true);

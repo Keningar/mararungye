@@ -1,5 +1,8 @@
 import React from "react";
-import { Form, Formik, FormikHelpers } from "formik";
+import { Form as _Form, Formik as _Formik, FormikHelpers } from "formik";
+// React 19 strict JSX types vs formik v2
+const Form: any = _Form;
+const Formik: any = _Formik;
 import styles from "./MultiStepForm.module.css";
 
 export interface StepData {
@@ -21,8 +24,8 @@ interface MultiStepFormProps<T = {}> {
   initialValues?: T;
   onNext?: (stepSubmitData: StepSubmit<T>) => void;
   onPrev?: (prevIndex: number) => void;
-  prevButton?: (onPrevClick?: () => void) => JSX.Element;
-  nextButton?: (props: NextButtonProps) => JSX.Element;
+  prevButton?: (onPrevClick?: () => void) => React.ReactNode;
+  nextButton?: (props: NextButtonProps) => React.ReactNode;
   classes?: {
     form?: string;
     label?: string;

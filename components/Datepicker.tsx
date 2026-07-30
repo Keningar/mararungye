@@ -167,6 +167,12 @@ export default function Datepicker({ startDate, onChange }: DatepickerProps) {
     setType('fecha');
   };
 
+  // React 19 types: @headlessui/react v1 ref-forwarding components use old JSX types
+  const _TRoot: any = Transition.Root;
+  const _TChild: any = Transition.Child;
+  const _Dialog: any = Dialog;
+  const _DialogOverlay: any = Dialog.Overlay;
+
   const toggleDatepicker = () => setShowDatepicker(prev => !prev);
 
   const showMonthPicker = () => setType('mes');
@@ -372,14 +378,14 @@ export default function Datepicker({ startDate, onChange }: DatepickerProps) {
         </svg>
       </div>
       {!isMedium && (
-        <Transition.Root show={showDatepicker} as={React.Fragment}>
-          <Dialog
+        <_TRoot show={showDatepicker} as={React.Fragment}>
+          <_Dialog
             as='div'
             className='fixed z-10 inset-0 overflow-y-auto'
             onClose={toggleDatepicker}
           >
             <div className='flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center'>
-              <Transition.Child
+              <_TChild
                 as={React.Fragment}
                 enter='ease-out duration-300'
                 enterFrom='opacity-0'
@@ -388,12 +394,12 @@ export default function Datepicker({ startDate, onChange }: DatepickerProps) {
                 leaveFrom='opacity-100'
                 leaveTo='opacity-0'
               >
-                <Dialog.Overlay className='fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity' />
-              </Transition.Child>
+                <_DialogOverlay className='fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity' />
+              </_TChild>
 
               {/* This element is to trick the browser into centering the modal contents. */}
 
-              <Transition.Child
+              <_TChild
                 as={React.Fragment}
                 enter='ease-out duration-300'
                 enterFrom='opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'
@@ -405,10 +411,10 @@ export default function Datepicker({ startDate, onChange }: DatepickerProps) {
                 <div className='transform transition-all w-96 p-2'>
                   {datepicker}
                 </div>
-              </Transition.Child>
+              </_TChild>
             </div>
-          </Dialog>
-        </Transition.Root>
+          </_Dialog>
+        </_TRoot>
       )}
       {isMedium && showDatepicker && (
         <ClickAwayListener onClickAway={toggleDatepicker}>

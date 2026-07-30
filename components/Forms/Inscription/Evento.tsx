@@ -1,4 +1,6 @@
-import { SelectField, SelectFieldOption } from "../Fields";
+import { SelectField, SelectFieldOption as _SelectFieldOption } from "../Fields";
+// React 19 strict JSX types vs @mui/base v5 ref-forwarding
+const SelectFieldOption: any = _SelectFieldOption;
 import capitalize from "lodash.capitalize";
 
 import { EventsStore } from "@/stores/eventsStore";
